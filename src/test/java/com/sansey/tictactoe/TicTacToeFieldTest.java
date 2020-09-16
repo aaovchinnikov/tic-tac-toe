@@ -31,7 +31,9 @@ class TicTacToeFieldTest {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     byte[][] array = new byte[3][3];
     array[0][0] = 1;
-    new TicTacToeField(array).printTo(
+    new TicTacToeField(
+        new SimpleByteMatrix(array)
+    ).printTo(
         new PrintStream(baos)
     );
     assertEquals(
@@ -48,7 +50,9 @@ class TicTacToeFieldTest {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     byte[][] array = new byte[3][3];
     array[0][0] = 2;
-    new TicTacToeField(array).printTo(
+    new TicTacToeField(
+        new SimpleByteMatrix(array)
+    ).printTo(
         new PrintStream(baos)
     );
     assertEquals(
@@ -68,10 +72,11 @@ class TicTacToeFieldTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[][] array = new byte[3][3];
         array[0][0] = 3;
-        new TicTacToeField(array).printTo(
+        new TicTacToeField(
+            new SimpleByteMatrix(array)
+        ).printTo(
             new PrintStream(baos)
         );
-        
       }
     });
   }

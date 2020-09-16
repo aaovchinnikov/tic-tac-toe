@@ -9,51 +9,58 @@ import java.io.PrintStream;
  * @author Alexander Ovchinnikov
  */
 public final class TicTacToeField implements Field {
+  //FIXME Duplicates constant in ValidatedTicTacToeArray
   /**
    * Size of field array in one dimension.
    */
   private static final int FIELD_SIZE = 3;
+
   /**
    * Byte array that stores the field.
    * Empty cells are represented by value 0 in array item.
    * X's are represented by value 1 in array item.
    * O's are represented by value 2 in array item.
    */
-  private final byte[][] field;
+  private final ByteMatrix field;
 
   /**
    * Main constructor.
    * Doesn't validate provided array for size and content correctness.
-   * @param array - byte array that stores the field
+   * @param matrix - byte array that stores the field
    */
-  public TicTacToeField(final byte[][] array) {
-    this.field = array;
+  public TicTacToeField(final ByteMatrix matrix) {
+    this.field = matrix;
   }
 
   /**
-   * Default constructor.
+   * Secondary (default) constructor.
    */
   public TicTacToeField() {
-    this(new byte[FIELD_SIZE][FIELD_SIZE]);
+    this(
+        new SimpleByteMatrix(
+            new byte[FIELD_SIZE][FIELD_SIZE]
+        )
+    );
   }
 
   @Override
   public void printTo(final PrintStream out) {
+    final byte[][] cache = this.field.matrix();
     out.println("  1 2 3");
     for (int i = 0; i < FIELD_SIZE; i++) {
       out.print(i + 1);
       for (int j = 0; j < FIELD_SIZE; j++) {
         out.print(' ');
-        if (field[i][j] == 0) {
+        if (cache[i][j] == 0) {
           out.print('_');
-        } else if (field[i][j] == 1) {
+        } else if (cache[i][j] == 1) {
           out.print('X');
-        } else if (field[i][j] == 2) {
+        } else if (cache[i][j] == 2) {
           out.print('O');
         } else {
           throw new IllegalStateException(
               "Invalid value "
-                  + field[i][j]
+                  + cache[i][j]
                   + " in field backing array at element with index ["
                   + i
                   + "]["
