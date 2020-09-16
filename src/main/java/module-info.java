@@ -1,3 +1,3 @@
-module tictactoe {
-	exports com.sansey.tictactoe;
+module com.sansey.tictactoe {
+  exports com.sansey.tictactoe;
 }

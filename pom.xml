@@ -108,9 +108,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
-					<argLine>
-						@{argLine} --add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED
-					</argLine>
+					<argLine>@{argLine} --add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED</argLine>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -140,7 +138,10 @@
 					</excludes>
 				</configuration>
 				<executions>
+					<!-- You'll get 'Skipping JaCoCo execution due to missing execution 
+						data /target/jacoco.exec' message until first JUnit test-case class is created -->
 					<execution>
+						<id>default-prepare-agent</id>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
