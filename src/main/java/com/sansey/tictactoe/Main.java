@@ -11,6 +11,6 @@ public final class Main {
    * @param args - command-line arguments of application
    */
   public static void main(final String[] args) {
-    System.out.println("Hello, World!");
+    new TicTacToeField().printTo(System.out);
   }
 }
