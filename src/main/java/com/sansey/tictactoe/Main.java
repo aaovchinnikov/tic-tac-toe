@@ -11,6 +11,14 @@ public final class Main {
    * @param args - command-line arguments of application
    */
   public static void main(final String[] args) {
-    new TicTacToeField().printTo(System.out);
+    byte[][] array = new byte[3][3];
+    new TicTacToeField(array).printTo(System.out);
+    System.out.println();
+    array[0][0] = 1;
+    new TicTacToeField(array).printTo(System.out);
+    System.out.println();
+    array[0][1] = 2;
+    new TicTacToeField(array).printTo(System.out);
+    System.out.println();
   }
 }
