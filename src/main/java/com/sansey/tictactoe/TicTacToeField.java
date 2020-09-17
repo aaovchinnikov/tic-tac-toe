@@ -9,12 +9,6 @@ import java.io.PrintStream;
  * @author Alexander Ovchinnikov
  */
 public final class TicTacToeField implements Field {
-  //FIXME Duplicates constant in ValidatedTicTacToeArray
-  /**
-   * Size of field array in one dimension.
-   */
-  private static final int FIELD_SIZE = 3;
-
   /**
    * Byte array that stores the field.
    * Empty cells are represented by value 0 in array item.
@@ -26,6 +20,7 @@ public final class TicTacToeField implements Field {
   /**
    * Main constructor.
    * Doesn't validate provided array for size and content correctness.
+   * Use {@link ValidatedTicTacToeArray} to validate passed byte array.
    * @param matrix - byte array that stores the field
    */
   public TicTacToeField(final ByteMatrix matrix) {
@@ -33,23 +28,19 @@ public final class TicTacToeField implements Field {
   }
 
   /**
-   * Secondary (default) constructor.
+   * Prints game field to provided {@link PrintStream}.
+   * @throws IllegalStateException if backing array
+   *     has value other than 0 or 1 or 2.
    */
-  public TicTacToeField() {
-    this(
-        new SimpleByteMatrix(
-            new byte[FIELD_SIZE][FIELD_SIZE]
-        )
-    );
-  }
-
   @Override
   public void printTo(final PrintStream out) {
+    final int rows = 3;
+    final int columns = 3;
     final byte[][] cache = this.field.matrix();
     out.println("  1 2 3");
-    for (int i = 0; i < FIELD_SIZE; i++) {
+    for (int i = 0; i < rows; i++) {
       out.print(i + 1);
-      for (int j = 0; j < FIELD_SIZE; j++) {
+      for (int j = 0; j < columns; j++) {
         out.print(' ');
         if (cache[i][j] == 0) {
           out.print('_');

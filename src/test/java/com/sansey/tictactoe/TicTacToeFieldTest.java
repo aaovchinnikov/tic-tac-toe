@@ -14,7 +14,11 @@ class TicTacToeFieldTest {
   @Test
   void testPrintEmptyField() {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    new TicTacToeField().printTo(
+    new TicTacToeField(
+        new SimpleByteMatrix(
+            new byte[3][3]
+        )
+    ).printTo(
         new PrintStream(baos)
     );
     assertEquals(
