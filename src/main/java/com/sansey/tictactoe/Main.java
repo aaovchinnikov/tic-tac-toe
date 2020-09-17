@@ -11,21 +11,15 @@ public final class Main {
    * @param args - command-line arguments of application
    */
   public static void main(final String[] args) {
-    final int size = 3;
-    byte[][] array = new byte[size][size];
-    new TicTacToeField(
-      new ValidatedTicTacToeArray(array)
-    ).printTo(System.out);
-    System.out.println();
-    array[0][0] = 1;
-    new TicTacToeField(
-        new ValidatedTicTacToeArray(array)
-      ).printTo(System.out);
-    System.out.println();
-    array[0][1] = 2;
-    new TicTacToeField(
-        new ValidatedTicTacToeArray(array)
-      ).printTo(System.out);
-    System.out.println();
+    final int rows = 3;
+    final int columns = 3;
+    new ConsoleTicTacToe(
+        System.out,
+        new TicTacToeField(
+            new ValidatedTicTacToeArray(
+                new byte[rows][columns]
+            )
+        )
+    ).start();
   }
 }

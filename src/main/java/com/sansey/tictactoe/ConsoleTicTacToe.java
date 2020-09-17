@@ -30,5 +30,7 @@ public final class ConsoleTicTacToe implements Game {
   public void start() {
     this.out.println("Tic-tac-toe game started!");
     this.field.printTo(out);
+    this.out.print("X's turn. Type cell coordinates - row and "
+        + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
   }
 }
