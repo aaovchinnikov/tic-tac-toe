@@ -19,7 +19,7 @@ public final class ValidatedFieldValue implements IntValueAt {
   /**
    * Main constructor.
    * @param i - {@link IntValueAt} to decorate
-   * @param s - size of field
+   * @param s - valid size of field
    */
   public ValidatedFieldValue(final IntValueAt i, final NaturalInt s) {
     this.origin = i;

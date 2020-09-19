@@ -13,14 +13,14 @@ public final class Main {
    * @param args - command-line arguments of application
    */
   public static void main(final String[] args) {
-    final int rows = 3;
-    final int columns = 3;
+    final int size = 3;
     new ConsoleTicTacToe(
         new Scanner(System.in),
         System.out,
         new TicTacToeField(
             new ValidatedTicTacToeArray(
-                new int[rows][columns]
+                new int[size][size],
+                new NaturalInt(size)
             )
         )
     ).start();

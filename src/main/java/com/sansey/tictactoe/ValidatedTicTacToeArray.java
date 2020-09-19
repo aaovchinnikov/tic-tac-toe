@@ -16,11 +16,18 @@ public final class ValidatedTicTacToeArray implements IntMatrix {
   private final int[][] array;
 
   /**
+   * Valid size of field.
+   */
+  private final NaturalInt size;
+
+  /**
    * Main constructor.
    * @param arr - integers array that stores the Tic-tac-toe field.
+   * @param s - valid size of field
    */
-  public ValidatedTicTacToeArray(final int[][] arr) {
+  public ValidatedTicTacToeArray(final int[][] arr, final NaturalInt s) {
     this.array = arr;
+    this.size = s;
   }
 
   /**
@@ -29,31 +36,28 @@ public final class ValidatedTicTacToeArray implements IntMatrix {
    */
   @Override
   public int[][] matrix() throws Exception {
-    // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
-    final int rows = 3;
-    final int columns = 3;
-    if (this.array.length != rows) {
+    if (this.array.length != this.size.value()) {
       throw new Exception(
           "Provided array should be "
-              + rows
+              + this.size.value()
               + "x"
-              + columns
+              + this.size.value()
               + " in size, but instead has rows: "
               + this.array.length
       );
     }
-    if (this.array[0].length != columns) {
+    if (this.array[0].length != this.size.value()) {
       throw new Exception(
           "Provided array should be "
-              + rows
+              + this.size.value()
               + "x"
-              + columns
+              + this.size.value()
               + " in size, but instead has columns: "
               + this.array[0].length
       );
     }
-    for (int i = 0; i < rows; i++) {
-      for (int j = 0; j < columns; j++) {
+    for (int i = 0; i < this.size.value(); i++) {
+      for (int j = 0; j < this.size.value(); j++) {
         if (
             this.array[i][j] != 0
             && this.array[i][j] != 1

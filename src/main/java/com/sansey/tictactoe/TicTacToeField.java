@@ -73,9 +73,9 @@ public final class TicTacToeField implements Field {
     try {
       final int rows = 3;
       final int columns = 3;
-      out.println("  1 2 3");
+      out.println("  0 1 2");
       for (int i = 0; i < rows; i++) {
-        out.print(i + 1);
+        out.print(i);
         for (int j = 0; j < columns; j++) {
           out.print(' ');
           if (this.field.matrix()[i][j] == 0) {

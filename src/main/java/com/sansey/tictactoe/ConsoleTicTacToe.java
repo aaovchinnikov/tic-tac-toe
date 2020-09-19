@@ -2,6 +2,7 @@ package com.sansey.tictactoe;
 
 import java.io.PrintStream;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -42,18 +43,39 @@ public final class ConsoleTicTacToe implements Game {
   @Override
   public void start() {
     try {
+      // FIXME Checkstyle workaround to hide internal knowledge
+      // that field is 3x3
+      final int size = 3;
+      boolean valid = false;
+      Field fld = this.field;
       this.out.println("Tic-tac-toe game started!");
-      this.field.printTo(out);
-      this.out.print("X's turn. Type cell coordinates - row and "
-          + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
-      try {
-        final Scanner input = new Scanner(this.scanner.nextLine());
-        final int row = input.nextInt();
-        final int column = input.nextInt();
-        this.out.println("Row is " + row);
-        this.out.println("Columnt is " + column);
-      } catch (InputMismatchException ime) {
-        this.out.println("Input is not an integer coordinates.");
+      fld.printTo(out);
+      while (!valid) {
+        this.out.print("X's turn. Type cell coordinates - row and "
+            + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
+        try {
+          final Scanner input = new Scanner(this.scanner.nextLine());
+          final int row = input.nextInt();
+          final int column = input.nextInt();
+          this.out.println("Row is " + row);
+          this.out.println("Columnt is " + column);
+          fld = fld.withValueAt(
+              new ValidatedFieldValue(
+                  new SimpleIntValueAt(1, row, column),
+                  new NaturalInt(size)
+              )
+          );
+          valid = true;
+          fld.printTo(out);
+        } catch (InputMismatchException ime) {
+          this.out.println("Input is not an integer coordinates.");
+        } catch (NoSuchElementException nse) {
+          this.out.println(
+              "Input should contain two coordinates but only one entered."
+          );
+        } catch (Exception e) {
+          this.out.println(e.getMessage());
+        }
       }
     } catch (Exception e) {
       e.printStackTrace();

@@ -10,7 +10,13 @@ class ValidatedTicTacToeArrayTest {
   @Test
   void arrayWithZeros() throws Exception {
     final int[][] array = new int[3][3];
-    assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
+    assertEquals(
+        array,
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix()
+    );
   }
   
   @Test
@@ -21,7 +27,13 @@ class ValidatedTicTacToeArrayTest {
         array[i][j] = 1;
       }
     }
-    assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
+    assertEquals(
+        array,
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix()
+    );
   }
   
   @Test
@@ -32,16 +44,25 @@ class ValidatedTicTacToeArrayTest {
         array[i][j] = 2;
       }
     }
-    assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
+    assertEquals(
+        array,
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix()
+    );
   }
   
   @Test
-  void testWrongRowsCountArray() {
+  void wrongRowsCountArray() {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
         final int[][] array = new int[0][3];
-        new ValidatedTicTacToeArray(array).matrix();
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix();
       }
     });
     assertEquals("Provided array should be 3x3 in size, but instead has rows: 0", e.getMessage());
@@ -53,7 +74,10 @@ class ValidatedTicTacToeArrayTest {
       @Override
       public void execute() throws Throwable {
         final int[][] array = new int[3][0];
-        new ValidatedTicTacToeArray(array).matrix();
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix();
       }
     });
     assertEquals("Provided array should be 3x3 in size, but instead has columns: 0", e.getMessage());
@@ -66,7 +90,10 @@ class ValidatedTicTacToeArrayTest {
       public void execute() throws Throwable {
         final int[][] array = new int[3][3];
         array[0][0] = -1;
-        new ValidatedTicTacToeArray(array).matrix();
+        new ValidatedTicTacToeArray(
+            array,
+            new NaturalInt(3)
+        ).matrix();
       }
     });
     assertEquals("Invalid value -1 in provided array at element with index [0][0]. Should be 0 or 1 or 2.", e.getMessage());

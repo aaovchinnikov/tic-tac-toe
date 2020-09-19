@@ -24,10 +24,10 @@ class TicTacToeFieldTest {
         new PrintStream(baos)
     );
     assertEquals(
-        "  1 2 3" + System.lineSeparator()
-            + "1 X _ _" + System.lineSeparator()
-            + "2 _ _ _" + System.lineSeparator()
-            + "3 _ _ _" + System.lineSeparator(),
+        "  0 1 2" + System.lineSeparator()
+            + "0 X _ _" + System.lineSeparator()
+            + "1 _ _ _" + System.lineSeparator()
+            + "2 _ _ _" + System.lineSeparator(),
         baos.toString(StandardCharsets.UTF_8)
     );
   }
@@ -74,10 +74,10 @@ class TicTacToeFieldTest {
         new PrintStream(baos)
     );
     assertEquals(
-        "  1 2 3" + System.lineSeparator()
+        "  0 1 2" + System.lineSeparator()
+            + "0 _ _ _" + System.lineSeparator()
             + "1 _ _ _" + System.lineSeparator()
-            + "2 _ _ _" + System.lineSeparator()
-            + "3 _ _ _" + System.lineSeparator(),
+            + "2 _ _ _" + System.lineSeparator(),
         baos.toString(StandardCharsets.UTF_8)
     );
   }
@@ -93,10 +93,10 @@ class TicTacToeFieldTest {
         new PrintStream(baos)
     );
     assertEquals(
-        "  1 2 3" + System.lineSeparator()
-            + "1 X _ _" + System.lineSeparator()
-            + "2 _ _ _" + System.lineSeparator()
-            + "3 _ _ _" + System.lineSeparator(),
+        "  0 1 2" + System.lineSeparator()
+            + "0 X _ _" + System.lineSeparator()
+            + "1 _ _ _" + System.lineSeparator()
+            + "2 _ _ _" + System.lineSeparator(),
         baos.toString(StandardCharsets.UTF_8)
     );
   }
@@ -112,10 +112,10 @@ class TicTacToeFieldTest {
         new PrintStream(baos)
     );
     assertEquals(
-        "  1 2 3" + System.lineSeparator()
-            + "1 O _ _" + System.lineSeparator()
-            + "2 _ _ _" + System.lineSeparator()
-            + "3 _ _ _" + System.lineSeparator(),
+        "  0 1 2" + System.lineSeparator()
+            + "0 O _ _" + System.lineSeparator()
+            + "1 _ _ _" + System.lineSeparator()
+            + "2 _ _ _" + System.lineSeparator(),
         baos.toString(StandardCharsets.UTF_8)
     );
   }
