@@ -3,7 +3,7 @@ package com.sansey.tictactoe;
 /**
  * Validating decorator for ByteArray that checks provided byte array
  * to be suitable for backing {@link TicTacToeField}.
- * Suitable byte array is 3x3 and has only values 0, 1, 2.
+ * Suitable byte array is 3x3 in size and has only values 0, 1, 2.
  * @author Alexander Ovchinnikov
  */
 public final class ValidatedTicTacToeArray implements ByteMatrix {
