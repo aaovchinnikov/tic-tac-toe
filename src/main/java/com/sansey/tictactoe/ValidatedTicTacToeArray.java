@@ -25,6 +25,7 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
 
   @Override
   public byte[][] matrix() {
+    // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
     final int rows = 3;
     final int columns = 3;
     if (this.array.length != rows) {

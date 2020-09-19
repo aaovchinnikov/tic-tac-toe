@@ -69,7 +69,7 @@ public final class TicTacToeField implements Field {
    */
   @Override
   public void printTo(final PrintStream out) {
-    // FIXME workaround to hide internal knowledge that field is 3x3
+    // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
     final int rows = 3;
     final int columns = 3;
     out.println("  1 2 3");
