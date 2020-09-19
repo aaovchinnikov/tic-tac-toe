@@ -49,7 +49,8 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
     }
     for (int i = 0; i < rows; i++) {
       for (int j = 0; j < columns; j++) {
-        if (this.array[i][j] != 0
+        if (
+            this.array[i][j] != 0
             && this.array[i][j] != 1
             && this.array[i][j] != 2
         ) {
