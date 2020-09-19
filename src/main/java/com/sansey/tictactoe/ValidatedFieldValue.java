@@ -30,10 +30,11 @@ public final class ValidatedFieldValue implements ByteValueAt {
   public byte value() throws Exception {
     if (
         this.origin.value() != 0
-        || this.origin.value() != 1
-        || this.origin.value() != 2
+        && this.origin.value() != 1
+        && this.origin.value() != 2
     ) {
-      throw new Exception("Provided value "
+      throw new Exception(
+          "Provided value "
           + this.origin.value()
           + "is not valid. Allowed values are 0 or 1 or 2."
       );
@@ -49,7 +50,8 @@ public final class ValidatedFieldValue implements ByteValueAt {
             && this.origin.row() < this.size.value()
         )
     ) {
-      throw new Exception("Provided row coordinate "
+      throw new Exception(
+          "Provided row coordinate "
           + this.origin.row()
           + " is out of "
           + this.size.value()
@@ -69,7 +71,8 @@ public final class ValidatedFieldValue implements ByteValueAt {
             && this.origin.column() < this.size.value()
         )
     ) {
-      throw new Exception("Provided column coordinate "
+      throw new Exception(
+          "Provided column coordinate "
           + this.origin.column()
           + " is out of "
           + this.size.value()

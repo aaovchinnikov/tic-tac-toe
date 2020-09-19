@@ -26,7 +26,11 @@ public class NaturalInt implements Int {
   @Override
   public int value() throws Exception {
     if (this.value <= 0) {
-      throw new Exception("Provided integer is not natural.");
+      throw new Exception(
+          "Provided integer "
+          + this.value
+          + " is not natural."
+      );
     }
     return this.value;
   }
