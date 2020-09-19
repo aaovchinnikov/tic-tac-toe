@@ -56,7 +56,7 @@ public final class ConsoleTicTacToe implements Game {
         this.out.println("Input is not an integer coordinates.");
       }
     } catch (Exception e) {
-      for(StackTraceElement element: e.getStackTrace()) {
+      for (StackTraceElement element: e.getStackTrace()) {
         System.out.println(element);
       }
     }

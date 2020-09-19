@@ -8,36 +8,38 @@ import org.junit.jupiter.api.function.Executable;
 class ValidatedTicTacToeArrayTest {
 
   @Test
-  void testValidArray() {
+  void testValidArray() throws Exception {
     final byte[][] array = new byte[3][3];
     assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
   }
   
   @Test
   void testWrongRowsCountArray() {
-    assertThrows(IllegalArgumentException.class, new Executable() {
+    Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
         final byte[][] array = new byte[0][3];
         new ValidatedTicTacToeArray(array).matrix();
       }
     });
+    assertEquals("Provided array should be 3x3 in size, but instead has rows: 0", e.getMessage());
   }
   
   @Test
-  void testWrongColumnsCountArray() {
-    assertThrows(IllegalArgumentException.class, new Executable() {
+  void wrongColumnsCountArray() {
+    Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
         final byte[][] array = new byte[3][0];
         new ValidatedTicTacToeArray(array).matrix();
       }
     });
+    assertEquals("Provided array should be 3x3 in size, but instead has columns: 0", e.getMessage());
   }
   
   @Test
-  void testWrongValuesArray() {
-    assertThrows(IllegalArgumentException.class, new Executable() {
+  void wrongValuesArray() {
+    Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
         final byte[][] array = new byte[3][3];
@@ -45,6 +47,7 @@ class ValidatedTicTacToeArrayTest {
         new ValidatedTicTacToeArray(array).matrix();
       }
     });
+    assertEquals("Invalid value -1 in provided array at element with index [0][0]. Should be 0 or 1 or 2.", e.getMessage());
   }
   
 }

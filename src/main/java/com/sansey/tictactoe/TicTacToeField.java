@@ -64,9 +64,7 @@ public final class TicTacToeField implements Field {
 
   /**
    * Prints game field to provided {@link PrintStream}.
-   * @throws Exception 
-   * @throws IllegalStateException if backing array
-   *     has value other than 0 or 1 or 2.
+   * @throws Exception if backing array is invalid
    */
   @Override
   public void printTo(final PrintStream out) throws Exception {

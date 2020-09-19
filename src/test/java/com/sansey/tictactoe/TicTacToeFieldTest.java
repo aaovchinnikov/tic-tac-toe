@@ -12,7 +12,7 @@ import org.junit.jupiter.api.function.Executable;
 class TicTacToeFieldTest {
 
   @Test
-  void testPrintEmptyField() {
+  void printEmptyField() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     new TicTacToeField(
         new SimpleByteMatrix(
@@ -31,7 +31,7 @@ class TicTacToeFieldTest {
   }
 
   @Test
-  void testPrintFieldWithX() {
+  void printFieldWithX() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     byte[][] array = new byte[3][3];
     array[0][0] = 1;
@@ -50,7 +50,7 @@ class TicTacToeFieldTest {
   }
   
   @Test
-  void testPrintFieldWithO() {
+  void printFieldWithO() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     byte[][] array = new byte[3][3];
     array[0][0] = 2;
@@ -69,8 +69,8 @@ class TicTacToeFieldTest {
   }
   
   @Test
-  void testPrintFieldWithInvalidValue() {
-    assertThrows(IllegalStateException.class, new Executable() {
+  void printFieldWithInvalidValue() {
+    assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
