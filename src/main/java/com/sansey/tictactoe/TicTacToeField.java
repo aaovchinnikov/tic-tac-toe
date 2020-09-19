@@ -64,39 +64,47 @@ public final class TicTacToeField implements Field {
 
   /**
    * Prints game field to provided {@link PrintStream}.
+   * @throws Exception 
    * @throws IllegalStateException if backing array
    *     has value other than 0 or 1 or 2.
    */
   @Override
-  public void printTo(final PrintStream out) {
+  public void printTo(final PrintStream out) throws Exception {
     // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
-    final int rows = 3;
-    final int columns = 3;
-    out.println("  1 2 3");
-    for (int i = 0; i < rows; i++) {
-      out.print(i + 1);
-      for (int j = 0; j < columns; j++) {
-        out.print(' ');
-        if (this.field.matrix()[i][j] == 0) {
-          out.print('_');
-        } else if (this.field.matrix()[i][j] == 1) {
-          out.print('X');
-        } else if (this.field.matrix()[i][j] == 2) {
-          out.print('O');
-        } else {
-          throw new IllegalStateException(
-              "Invalid value "
-                  + this.field.matrix()[i][j]
-                  + " in field backing array at element with index ["
-                  + i
-                  + "]["
-                  + j
-                  + "]."
-                  + " Should be 0 or 1 or 2."
-          );
+    try {
+      final int rows = 3;
+      final int columns = 3;
+      out.println("  1 2 3");
+      for (int i = 0; i < rows; i++) {
+        out.print(i + 1);
+        for (int j = 0; j < columns; j++) {
+          out.print(' ');
+          if (this.field.matrix()[i][j] == 0) {
+            out.print('_');
+          } else if (this.field.matrix()[i][j] == 1) {
+            out.print('X');
+          } else if (this.field.matrix()[i][j] == 2) {
+            out.print('O');
+          } else {
+            throw new Exception(
+                "Invalid value "
+                    + this.field.matrix()[i][j]
+                    + " in field backing array at element with index ["
+                    + i
+                    + "]["
+                    + j
+                    + "]."
+                    + " Should be 0 or 1 or 2."
+            );
+          }
         }
+        out.println();
       }
-      out.println();
+    } catch (Exception e) {
+      throw new Exception(
+          "Can't print invalid Tic-tac-toe field",
+          e
+      );
     }
   }
 }

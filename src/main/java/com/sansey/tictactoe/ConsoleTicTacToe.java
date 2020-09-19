@@ -41,18 +41,24 @@ public final class ConsoleTicTacToe implements Game {
 
   @Override
   public void start() {
-    this.out.println("Tic-tac-toe game started!");
-    this.field.printTo(out);
-    this.out.print("X's turn. Type cell coordinates - row and "
-        + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
     try {
-      final Scanner input = new Scanner(this.scanner.nextLine());
-      final int row = input.nextInt();
-      final int column = input.nextInt();
-      this.out.println("Row is " + row);
-      this.out.println("Columnt is " + column);
-    } catch (InputMismatchException ime) {
-      this.out.println("Input is not an integer coordinates.");
+      this.out.println("Tic-tac-toe game started!");
+      this.field.printTo(out);
+      this.out.print("X's turn. Type cell coordinates - row and "
+          + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
+      try {
+        final Scanner input = new Scanner(this.scanner.nextLine());
+        final int row = input.nextInt();
+        final int column = input.nextInt();
+        this.out.println("Row is " + row);
+        this.out.println("Columnt is " + column);
+      } catch (InputMismatchException ime) {
+        this.out.println("Input is not an integer coordinates.");
+      }
+    } catch (Exception e) {
+      for(StackTraceElement element: e.getStackTrace()) {
+        System.out.println(element);
+      }
     }
   }
 }

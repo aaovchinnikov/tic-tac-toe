@@ -23,13 +23,17 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
     this.array = arr;
   }
 
+  /**
+   * Validates decorated byte[][] array to be 3x3 in size and
+   * to have only values 0, 1, 2, then returns it.
+   */
   @Override
-  public byte[][] matrix() {
+  public byte[][] matrix() throws Exception {
     // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
     final int rows = 3;
     final int columns = 3;
     if (this.array.length != rows) {
-      throw new IllegalArgumentException(
+      throw new Exception(
           "Provided array should be "
               + rows
               + "x"
@@ -39,7 +43,7 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
       );
     }
     if (this.array[0].length != columns) {
-      throw new IllegalArgumentException(
+      throw new Exception(
           "Provided array should be "
               + rows
               + "x"
@@ -55,7 +59,7 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
             && this.array[i][j] != 1
             && this.array[i][j] != 2
         ) {
-          throw new IllegalArgumentException(
+          throw new Exception(
               "Invalid value "
                   + this.array[i][j]
                   + " in provided array at element with index ["
