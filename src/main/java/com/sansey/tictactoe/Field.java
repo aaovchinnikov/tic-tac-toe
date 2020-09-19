@@ -3,7 +3,7 @@ package com.sansey.tictactoe;
 import java.io.PrintStream;
 
 /**
- * Represents game field that can print itself to provided {@link PrintStream}.
+ * Represents game field that consists of cells.
  * @author Alexander Ovchinnikov
  */
 public interface Field {
