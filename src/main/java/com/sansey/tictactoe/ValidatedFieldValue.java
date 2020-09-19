@@ -5,20 +5,31 @@ package com.sansey.tictactoe;
  * {@link TicTacToeField}.
  * @author Alexander Ovchinnikov
  */
-public class TicTacToeValidatedValue implements ByteValueAt {
+public final class ValidatedFieldValue implements ByteValueAt {
+  /**
+   * Validated value.
+   */
   private final ByteValueAt origin;
-  
+
+  /**
+   * Size of field, to be suitable for.
+   */
+  private final NaturalInt size;
+
   /**
    * Main constructor.
    * @param b - {@link ByteValueAt} to decorate
+   * @param s - size of field
    */
-  public TicTacToeValidatedValue(final ByteValueAt b) {
+  public ValidatedFieldValue(final ByteValueAt b, final NaturalInt s) {
     this.origin = b;
+    this.size = s;
   }
 
   @Override
   public byte value() throws Exception {
-    if (this.origin.value() != 0
+    if (
+        this.origin.value() != 0
         || this.origin.value() != 1
         || this.origin.value() != 2
     ) {
@@ -32,10 +43,19 @@ public class TicTacToeValidatedValue implements ByteValueAt {
 
   @Override
   public int row() throws Exception {
-    if (!(0 <= this.origin.row() && this.origin.row() < 3)) {
+    if (
+        !(
+            0 <= this.origin.row()
+            && this.origin.row() < this.size.value()
+        )
+    ) {
       throw new Exception("Provided row coordinate "
           + this.origin.row()
-          + " is out of 3x3 field"
+          + " is out of "
+          + this.size.value()
+          + "x"
+          + this.size.value()
+          + " field"
       );
     }
     return this.origin.row();
@@ -43,10 +63,19 @@ public class TicTacToeValidatedValue implements ByteValueAt {
 
   @Override
   public int column() throws Exception {
-    if (!(0 <= this.origin.column() && this.origin.column() < 3)) {
+    if (
+        !(
+            0 <= this.origin.column()
+            && this.origin.column() < this.size.value()
+        )
+    ) {
       throw new Exception("Provided column coordinate "
           + this.origin.column()
-          + " is out of 3x3 field"
+          + " is out of "
+          + this.size.value()
+          + "x"
+          + this.size.value()
+          + " field"
       );
     }
     return this.origin.column();

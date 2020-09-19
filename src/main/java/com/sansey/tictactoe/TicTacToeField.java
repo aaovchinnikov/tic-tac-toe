@@ -35,12 +35,9 @@ public final class TicTacToeField implements Field {
    * @param value - {@link ByteValueAt} for cell
    * @return <code>true</code> if cell empty and writable,
    *     <code>false</code> - otherwise
-   * @throws Exception if cell coordinates are not valid: negative or
-   *     out of the field
+   * @throws Exception if specified cell is not empty
    */
-  public Field withValueAt(
-      final ByteValueAt value
-  ) throws Exception {
+  public Field withValueAt(final ByteValueAt value) throws Exception {
     if (field.matrix()[value.row()][value.column()] != 0) {
       throw new Exception("Field at specified coordinates ["
           + value.row()
