@@ -1,7 +1,7 @@
 package com.sansey.tictactoe;
 
 /**
- * Validating decorator for ByteValueAt to be suitable for
+ * Validating decorator for IntValueAt to be suitable for
  * {@link TicTacToeField}.
  * @author Alexander Ovchinnikov
  */
@@ -18,11 +18,11 @@ public final class ValidatedFieldValue implements IntValueAt {
 
   /**
    * Main constructor.
-   * @param b - {@link IntValueAt} to decorate
+   * @param i - {@link IntValueAt} to decorate
    * @param s - size of field
    */
-  public ValidatedFieldValue(final IntValueAt b, final NaturalInt s) {
-    this.origin = b;
+  public ValidatedFieldValue(final IntValueAt i, final NaturalInt s) {
+    this.origin = i;
     this.size = s;
   }
 
@@ -44,20 +44,22 @@ public final class ValidatedFieldValue implements IntValueAt {
 
   @Override
   public int row() throws Exception {
-    if (
-        !(
-            0 <= this.origin.row()
-            && this.origin.row() < this.size.value()
-        )
-    ) {
+    if (this.origin.row() < 0) {
       throw new Exception(
           "Provided row coordinate "
-          + this.origin.row()
-          + " is out of "
-          + this.size.value()
-          + "x"
-          + this.size.value()
-          + " field"
+              + this.origin.row()
+              + " is negative. Only natural values are allowed."
+      );
+    }
+    if (this.origin.row() >= this.size.value()) {
+      throw new Exception(
+          "Provided row coordinate "
+              + this.origin.row()
+              + " is out of "
+              + this.size.value()
+              + "x"
+              + this.size.value()
+              + " field"
       );
     }
     return this.origin.row();
@@ -65,20 +67,22 @@ public final class ValidatedFieldValue implements IntValueAt {
 
   @Override
   public int column() throws Exception {
-    if (
-        !(
-            0 <= this.origin.column()
-            && this.origin.column() < this.size.value()
-        )
-    ) {
+    if (this.origin.column() < 0) {
       throw new Exception(
           "Provided column coordinate "
-          + this.origin.column()
-          + " is out of "
-          + this.size.value()
-          + "x"
-          + this.size.value()
-          + " field"
+              + this.origin.column()
+              + " is negative. Only natural values are allowed."
+      );
+    }
+    if (this.origin.column() >= this.size.value()) {
+      throw new Exception(
+          "Provided column coordinate "
+              + this.origin.column()
+              + " is out of "
+              + this.size.value()
+              + "x"
+              + this.size.value()
+              + " field"
       );
     }
     return this.origin.column();

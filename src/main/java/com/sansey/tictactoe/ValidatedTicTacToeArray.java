@@ -1,8 +1,8 @@
 package com.sansey.tictactoe;
 
 /**
- * Validating decorator for {@link IntMatrix} that checks provided integers array
- * to be suitable for backing {@link TicTacToeField}.
+ * Validating decorator for {@link IntMatrix} that checks provided
+ * integers array to be suitable for backing {@link TicTacToeField}.
  * Suitable byte array is 3x3 in size and has only values 0, 1, 2.
  * @author Alexander Ovchinnikov
  */

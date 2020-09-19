@@ -10,6 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 class TicTacToeFieldTest {
+  
+  @Test
+  void withCrossAtZeroZero() {
+    fail("not implemented");
+  }
 
   @Test
   void printEmptyField() throws Exception {
