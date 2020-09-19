@@ -46,11 +46,16 @@ public final class TicTacToeField implements Field {
           + "] is not empty."
       );
     }
-    // TODO check this copying with tests
     byte[][] array = Arrays.copyOf(
         this.field.matrix(),
         this.field.matrix().length
     );
+    for (int i = 0; i < array.length; i++) {
+      array[i] = Arrays.copyOf(
+          this.field.matrix()[i],
+          this.field.matrix()[i].length
+      );
+    }
     array[value.row()][value.column()] = value.value();
     return new TicTacToeField(
         new SimpleByteMatrix(
