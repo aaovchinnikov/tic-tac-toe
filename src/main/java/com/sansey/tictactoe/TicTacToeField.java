@@ -28,13 +28,11 @@ public final class TicTacToeField implements Field {
     this.field = matrix;
   }
 
-  // FIXME javadoc from another method
   /**
-   * Checks whether cell with coordinates [row][column] on the field is empty,
-   * so is writable.
+   * Returns new TicTacToeField with cell at provided coordinates
+   * set to provided value. Doesn't modify original TicTacToeField.
    * @param value - {@link ByteValueAt} for cell
-   * @return <code>true</code> if cell empty and writable,
-   *     <code>false</code> - otherwise
+   * @return new TicTacToeField with cell set to provided value
    * @throws Exception if specified cell is not empty
    */
   public Field withValueAt(final ByteValueAt value) throws Exception {
