@@ -1,25 +1,25 @@
 package com.sansey.tictactoe;
 
 /**
- * Validating decorator for ByteArray that checks provided byte array
+ * Validating decorator for {@link IntMatrix} that checks provided integers array
  * to be suitable for backing {@link TicTacToeField}.
  * Suitable byte array is 3x3 in size and has only values 0, 1, 2.
  * @author Alexander Ovchinnikov
  */
-public final class ValidatedTicTacToeArray implements ByteMatrix {
+public final class ValidatedTicTacToeArray implements IntMatrix {
   /**
-   * Byte array that stores the Tic-tac-toe field.
+   * Integers array that stores the Tic-tac-toe field.
    * Empty cells are represented by value 0 in array item.
    * X's are represented by value 1 in array item.
    * O's are represented by value 2 in array item.
    */
-  private final byte[][] array;
+  private final int[][] array;
 
   /**
    * Main constructor.
-   * @param arr - byte array that stores the Tic-tac-toe field.
+   * @param arr - integers array that stores the Tic-tac-toe field.
    */
-  public ValidatedTicTacToeArray(final byte[][] arr) {
+  public ValidatedTicTacToeArray(final int[][] arr) {
     this.array = arr;
   }
 
@@ -28,7 +28,7 @@ public final class ValidatedTicTacToeArray implements ByteMatrix {
    * to have only values 0, 1, 2, then returns it.
    */
   @Override
-  public byte[][] matrix() throws Exception {
+  public int[][] matrix() throws Exception {
     // FIXME Checkstyle workaround to hide internal knowledge that field is 3x3
     final int rows = 3;
     final int columns = 3;

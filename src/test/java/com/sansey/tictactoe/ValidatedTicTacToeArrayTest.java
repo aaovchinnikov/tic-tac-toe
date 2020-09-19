@@ -8,8 +8,30 @@ import org.junit.jupiter.api.function.Executable;
 class ValidatedTicTacToeArrayTest {
 
   @Test
-  void testValidArray() throws Exception {
-    final byte[][] array = new byte[3][3];
+  void arrayWithZeros() throws Exception {
+    final int[][] array = new int[3][3];
+    assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
+  }
+  
+  @Test
+  void arrayWithOnes() throws Exception {
+    final int[][] array = new int[3][3];
+    for(int i = 0; i < 3; i++) {
+      for(int j = 0; j < 3; j++) {
+        array[i][j] = 1;
+      }
+    }
+    assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
+  }
+  
+  @Test
+  void arrayWithTwos() throws Exception {
+    final int[][] array = new int[3][3];
+    for(int i = 0; i < 3; i++) {
+      for(int j = 0; j < 3; j++) {
+        array[i][j] = 2;
+      }
+    }
     assertEquals(array, new ValidatedTicTacToeArray(array).matrix());
   }
   
@@ -18,7 +40,7 @@ class ValidatedTicTacToeArrayTest {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final byte[][] array = new byte[0][3];
+        final int[][] array = new int[0][3];
         new ValidatedTicTacToeArray(array).matrix();
       }
     });
@@ -30,7 +52,7 @@ class ValidatedTicTacToeArrayTest {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final byte[][] array = new byte[3][0];
+        final int[][] array = new int[3][0];
         new ValidatedTicTacToeArray(array).matrix();
       }
     });
@@ -42,7 +64,7 @@ class ValidatedTicTacToeArrayTest {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final byte[][] array = new byte[3][3];
+        final int[][] array = new int[3][3];
         array[0][0] = -1;
         new ValidatedTicTacToeArray(array).matrix();
       }

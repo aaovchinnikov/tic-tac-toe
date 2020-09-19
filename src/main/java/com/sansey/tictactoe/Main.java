@@ -20,7 +20,7 @@ public final class Main {
         System.out,
         new TicTacToeField(
             new ValidatedTicTacToeArray(
-                new byte[rows][columns]
+                new int[rows][columns]
             )
         )
     ).start();

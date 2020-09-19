@@ -15,8 +15,8 @@ class TicTacToeFieldTest {
   void printEmptyField() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
     new TicTacToeField(
-        new SimpleByteMatrix(
-            new byte[3][3]
+        new SimpleIntMatrix(
+            new int[3][3]
         )
     ).printTo(
         new PrintStream(baos)
@@ -33,10 +33,10 @@ class TicTacToeFieldTest {
   @Test
   void printFieldWithX() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    byte[][] array = new byte[3][3];
+    int[][] array = new int[3][3];
     array[0][0] = 1;
     new TicTacToeField(
-        new SimpleByteMatrix(array)
+        new SimpleIntMatrix(array)
     ).printTo(
         new PrintStream(baos)
     );
@@ -52,10 +52,10 @@ class TicTacToeFieldTest {
   @Test
   void printFieldWithO() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    byte[][] array = new byte[3][3];
+    int[][] array = new int[3][3];
     array[0][0] = 2;
     new TicTacToeField(
-        new SimpleByteMatrix(array)
+        new SimpleIntMatrix(array)
     ).printTo(
         new PrintStream(baos)
     );
@@ -74,10 +74,10 @@ class TicTacToeFieldTest {
       @Override
       public void execute() throws Throwable {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[][] array = new byte[3][3];
+        int[][] array = new int[3][3];
         array[0][0] = 3;
         new TicTacToeField(
-            new SimpleByteMatrix(array)
+            new SimpleIntMatrix(array)
         ).printTo(
             new PrintStream(baos)
         );

@@ -16,7 +16,7 @@ public final class TicTacToeField implements Field {
    * X's are represented by value 1 in array item.
    * O's are represented by value 2 in array item.
    */
-  private final ByteMatrix field;
+  private final IntMatrix field;
 
   /**
    * Main constructor.
@@ -24,18 +24,18 @@ public final class TicTacToeField implements Field {
    * Use {@link ValidatedTicTacToeArray} to validate passed byte array.
    * @param matrix - byte array that stores the field
    */
-  public TicTacToeField(final ByteMatrix matrix) {
+  public TicTacToeField(final IntMatrix matrix) {
     this.field = matrix;
   }
 
   /**
    * Returns new TicTacToeField with cell at provided coordinates
    * set to provided value. Doesn't modify original TicTacToeField.
-   * @param value - {@link ByteValueAt} for cell
+   * @param value - {@link IntValueAt} for cell
    * @return new TicTacToeField with cell set to provided value
    * @throws Exception if specified cell is not empty
    */
-  public Field withValueAt(final ByteValueAt value) throws Exception {
+  public Field withValueAt(final IntValueAt value) throws Exception {
     if (field.matrix()[value.row()][value.column()] != 0) {
       throw new Exception("Field at specified coordinates ["
           + value.row()
@@ -44,7 +44,7 @@ public final class TicTacToeField implements Field {
           + "] is not empty."
       );
     }
-    byte[][] array = Arrays.copyOf(
+    int[][] array = Arrays.copyOf(
         this.field.matrix(),
         this.field.matrix().length
     );
@@ -56,7 +56,7 @@ public final class TicTacToeField implements Field {
     }
     array[value.row()][value.column()] = value.value();
     return new TicTacToeField(
-        new SimpleByteMatrix(
+        new SimpleIntMatrix(
             array
         )
     );

@@ -1,17 +1,17 @@
 package com.sansey.tictactoe;
 
 /**
- * Represents byte value that is placed at coordinates
+ * Represents integer value that is placed at coordinates
  * [{@link #row()}][{@link #column()}].
  * @author Alexander Ovchinnikov
  */
-public interface ByteValueAt {
+public interface IntValueAt {
   /**
-   * Byte value that is at coordinates [{@link #row()}][{@link #column()}].
+   * Integer value that is at coordinates [{@link #row()}][{@link #column()}].
    * @return value
    * @throws Exception if value can't be returned for any reason
    */
-  byte value() throws Exception;
+  int value() throws Exception;
 
   /**
    * Row of decorated {@link #value()}.

@@ -5,11 +5,11 @@ package com.sansey.tictactoe;
  * {@link TicTacToeField}.
  * @author Alexander Ovchinnikov
  */
-public final class ValidatedFieldValue implements ByteValueAt {
+public final class ValidatedFieldValue implements IntValueAt {
   /**
    * Validated value.
    */
-  private final ByteValueAt origin;
+  private final IntValueAt origin;
 
   /**
    * Size of field, to be suitable for.
@@ -18,16 +18,16 @@ public final class ValidatedFieldValue implements ByteValueAt {
 
   /**
    * Main constructor.
-   * @param b - {@link ByteValueAt} to decorate
+   * @param b - {@link IntValueAt} to decorate
    * @param s - size of field
    */
-  public ValidatedFieldValue(final ByteValueAt b, final NaturalInt s) {
+  public ValidatedFieldValue(final IntValueAt b, final NaturalInt s) {
     this.origin = b;
     this.size = s;
   }
 
   @Override
-  public byte value() throws Exception {
+  public int value() throws Exception {
     if (
         this.origin.value() != 0
         && this.origin.value() != 1

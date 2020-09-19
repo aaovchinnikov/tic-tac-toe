@@ -4,11 +4,11 @@ package com.sansey.tictactoe;
  * In-memory structure.
  * @author Alexander Ovchinnikov
  */
-public final class SimpleByteValueAt implements ByteValueAt {
+public final class SimpleIntValueAt implements IntValueAt {
   /**
    * Byte value for {@link #value()} stored in memory.
    */
-  private final byte value;
+  private final int value;
 
   /**
    * Row of decorated {@link #value} stored in memory.
@@ -26,14 +26,14 @@ public final class SimpleByteValueAt implements ByteValueAt {
    * @param r - row
    * @param c - column
    */
-  public SimpleByteValueAt(final byte v, final int r, final int c) {
+  public SimpleIntValueAt(final int v, final int r, final int c) {
     this.value = v;
     this.row = r;
     this.column = c;
   }
 
   @Override
-  public byte value() throws Exception {
+  public int value() throws Exception {
     return this.value;
   }
 
