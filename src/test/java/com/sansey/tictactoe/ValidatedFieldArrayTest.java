@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-class ValidatedTicTacToeArrayTest {
+class ValidatedFieldArrayTest {
 
   @Test
   void arrayWithZeros() throws Exception {
     final int[][] array = new int[3][3];
     assertEquals(
         array,
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix()
@@ -29,7 +29,7 @@ class ValidatedTicTacToeArrayTest {
     }
     assertEquals(
         array,
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix()
@@ -46,7 +46,7 @@ class ValidatedTicTacToeArrayTest {
     }
     assertEquals(
         array,
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix()
@@ -59,7 +59,7 @@ class ValidatedTicTacToeArrayTest {
       @Override
       public void execute() throws Throwable {
         final int[][] array = new int[0][3];
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix();
@@ -74,7 +74,7 @@ class ValidatedTicTacToeArrayTest {
       @Override
       public void execute() throws Throwable {
         final int[][] array = new int[3][0];
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix();
@@ -90,7 +90,7 @@ class ValidatedTicTacToeArrayTest {
       public void execute() throws Throwable {
         final int[][] array = new int[3][3];
         array[0][0] = -1;
-        new ValidatedTicTacToeArray(
+        new ValidatedFieldArray(
             array,
             new NaturalInt(3)
         ).matrix();

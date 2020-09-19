@@ -21,7 +21,7 @@ public final class TicTacToeField implements Field {
   /**
    * Main constructor.
    * Doesn't validate provided array for size and content correctness.
-   * Use {@link ValidatedTicTacToeArray} to validate passed byte array.
+   * Use {@link ValidatedFieldArray} to validate passed byte array.
    * @param matrix - byte array that stores the field
    */
   public TicTacToeField(final IntMatrix matrix) {

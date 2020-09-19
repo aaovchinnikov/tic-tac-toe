@@ -18,7 +18,7 @@ public final class Main {
         new Scanner(System.in),
         System.out,
         new TicTacToeField(
-            new ValidatedTicTacToeArray(
+            new ValidatedFieldArray(
                 new int[size][size],
                 new NaturalInt(size)
             )

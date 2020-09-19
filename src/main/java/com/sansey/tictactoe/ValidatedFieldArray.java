@@ -8,7 +8,7 @@ package com.sansey.tictactoe;
  * and has only values 0, 1, 2.
  * @author Alexander Ovchinnikov
  */
-public final class ValidatedTicTacToeArray implements IntMatrix {
+public final class ValidatedFieldArray implements IntMatrix {
   /**
    * Integers array that stores the Tic-tac-toe field.
    * Empty cells are represented by value 0 in array item.
@@ -27,7 +27,7 @@ public final class ValidatedTicTacToeArray implements IntMatrix {
    * @param arr - integers array that stores the Tic-tac-toe field.
    * @param s - valid size of field
    */
-  public ValidatedTicTacToeArray(final int[][] arr, final NaturalInt s) {
+  public ValidatedFieldArray(final int[][] arr, final NaturalInt s) {
     this.array = arr;
     this.size = s;
   }
