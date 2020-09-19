@@ -3,7 +3,9 @@ package com.sansey.tictactoe;
 /**
  * Validating decorator for {@link IntMatrix} that checks provided
  * integers array to be suitable for backing {@link TicTacToeField}.
- * Suitable byte array is 3x3 in size and has only values 0, 1, 2.
+ * Valid dimension {@link #size} is provided at constructor.
+ * Suitable array is [{@link #size}]x[{@link #size}] (e.g. 3x3)
+ * and has only values 0, 1, 2.
  * @author Alexander Ovchinnikov
  */
 public final class ValidatedTicTacToeArray implements IntMatrix {
