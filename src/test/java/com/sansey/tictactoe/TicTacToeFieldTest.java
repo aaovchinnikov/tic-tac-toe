@@ -12,10 +12,57 @@ import org.junit.jupiter.api.function.Executable;
 class TicTacToeFieldTest {
   
   @Test
-  void withCrossAtZeroZero() {
-    fail("not implemented");
+  void addCrossAtZeroZero() throws Exception {
+    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    new TicTacToeField(
+        new SimpleIntMatrix(
+            new int[3][3]
+        )
+    ).withValueAt(
+        new SimpleIntValueAt(1, 0, 0)
+    ).printTo(
+        new PrintStream(baos)
+    );
+    assertEquals(
+        "  1 2 3" + System.lineSeparator()
+            + "1 X _ _" + System.lineSeparator()
+            + "2 _ _ _" + System.lineSeparator()
+            + "3 _ _ _" + System.lineSeparator(),
+        baos.toString(StandardCharsets.UTF_8)
+    );
   }
 
+  @Test
+  void addCrossAtNonEmptyCell() {
+    final int row = 0;
+    final int column = 0;
+    final int[][] array = new int [3][3];
+    array[row][column] = 1;
+    Exception e = assertThrows(
+        Exception.class,
+        new Executable() {
+          @Override
+          public void execute() throws Throwable {
+            new TicTacToeField(
+                new SimpleIntMatrix(
+                    array
+                )
+            ).withValueAt(
+                new SimpleIntValueAt(1, row, column)
+            );
+          }
+        }
+    );
+    assertEquals(
+        "Field at specified coordinates ["
+            + row
+            + "]["
+            + column
+            + "] is not empty.",
+        e.getMessage()
+    );
+  }
+  
   @Test
   void printEmptyField() throws Exception {
     ByteArrayOutputStream baos = new ByteArrayOutputStream();

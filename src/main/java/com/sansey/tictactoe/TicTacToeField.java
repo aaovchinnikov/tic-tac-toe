@@ -37,11 +37,12 @@ public final class TicTacToeField implements Field {
    */
   public Field withValueAt(final IntValueAt value) throws Exception {
     if (field.matrix()[value.row()][value.column()] != 0) {
-      throw new Exception("Field at specified coordinates ["
-          + value.row()
-          + "]["
-          + value.column()
-          + "] is not empty."
+      throw new Exception(
+          "Field at specified coordinates ["
+              + value.row()
+              + "]["
+              + value.column()
+              + "] is not empty."
       );
     }
     int[][] array = Arrays.copyOf(
