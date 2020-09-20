@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.function.Executable;
 
+import com.sansey.tictactoe.ints.NaturalInt;
+
 class NaturalIntTest {
 
   @Test

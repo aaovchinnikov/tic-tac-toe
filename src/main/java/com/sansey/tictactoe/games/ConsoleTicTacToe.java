@@ -1,5 +1,10 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.games;
 
+import com.sansey.tictactoe.Field;
+import com.sansey.tictactoe.Game;
+import com.sansey.tictactoe.ints.NaturalInt;
+import com.sansey.tictactoe.values.SimpleIntValueAt;
+import com.sansey.tictactoe.values.ValidatedFieldValue;
 import java.io.PrintStream;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;

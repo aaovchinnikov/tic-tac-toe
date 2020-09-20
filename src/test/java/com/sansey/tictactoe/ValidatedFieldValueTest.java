@@ -5,6 +5,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import com.sansey.tictactoe.ints.NaturalInt;
+import com.sansey.tictactoe.values.SimpleIntValueAt;
+import com.sansey.tictactoe.values.ValidatedFieldValue;
+
 class ValidatedFieldValueTest {
 
   @Test

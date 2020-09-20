@@ -1,4 +1,6 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.values;
+
+import com.sansey.tictactoe.IntValueAt;
 
 /**
  * In-memory structure.

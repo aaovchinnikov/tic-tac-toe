@@ -1,7 +1,7 @@
 package com.sansey.tictactoe.matrices;
 
 import com.sansey.tictactoe.IntMatrix;
-import com.sansey.tictactoe.NaturalInt;
+import com.sansey.tictactoe.ints.NaturalInt;
 
 /**
  * Validating decorator for {@link IntMatrix} that checks provided

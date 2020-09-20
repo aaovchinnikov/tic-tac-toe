@@ -1,5 +1,8 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.main;
 
+import com.sansey.tictactoe.fields.TicTacToeField;
+import com.sansey.tictactoe.games.ConsoleTicTacToe;
+import com.sansey.tictactoe.ints.NaturalInt;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import com.sansey.tictactoe.matrices.ValidatedFieldArray;
 import java.util.Scanner;

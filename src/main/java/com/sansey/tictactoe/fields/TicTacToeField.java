@@ -1,5 +1,8 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.fields;
 
+import com.sansey.tictactoe.Field;
+import com.sansey.tictactoe.IntMatrix;
+import com.sansey.tictactoe.IntValueAt;
 import com.sansey.tictactoe.checks.AnyColumnHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.AnyRowHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.MainDiagonalHasAllCellsWithValue;

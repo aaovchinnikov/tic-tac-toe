@@ -1,4 +1,6 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.ints;
+
+import com.sansey.tictactoe.Int;
 
 /**
  * Natural integer decorator.

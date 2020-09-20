@@ -1,5 +1,5 @@
 /**
- * Package that holds classes related to my OOP version
+ * Package that holds basic interfaces related to my OOP version
  * of Tic-tac-toe game.
  * @author Alexander Ovchinnikov
  */

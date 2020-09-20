@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.sansey.tictactoe.values.SimpleIntValueAt;
+
 class SimpleIntValueAtTest {
 
   @Test
