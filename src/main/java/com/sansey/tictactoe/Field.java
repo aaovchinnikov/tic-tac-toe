@@ -19,13 +19,11 @@ public interface Field {
   /**
    * Returns true if the game has finished and provided values have won.
    * @param value - the value to check for the winning
-   * @return <code>true</code> if the game finished and X-es have won,
-   *     <code>false</code> - if game has not finished yet or O-es have won or
-   *     it's standoff
+   * @return <code>true</code> if the game finished and
+   *     provided values have won, otherwise - <code>false</code>
    * @throws Exception if result can't be determined for any reason
-   * @throws IndexOutOfBoundsException if field array rows count is zero
    */
-  public boolean valueWon(int value) throws Exception;
+  boolean valueWon(int value) throws Exception;
 
   /**
    * Returns true if field is full of values and
@@ -34,8 +32,8 @@ public interface Field {
    *     have no more empty cells, otherwise - <code>false</code>
    * @throws Exception if field can't be checked for any reason
    */
-  public boolean full() throws Exception;
-  
+  boolean full() throws Exception;
+
   /**
    * Prints game field to provided {@link PrintStream}.
    * @param out - {@link PrintStream} to print game field to.

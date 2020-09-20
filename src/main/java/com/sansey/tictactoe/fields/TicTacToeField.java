@@ -1,16 +1,12 @@
 package com.sansey.tictactoe.fields;
 
+import com.sansey.tictactoe.Check;
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.IntMatrix;
 import com.sansey.tictactoe.IntValueAt;
-import com.sansey.tictactoe.checks.AnyColumnHasAllCellsWithValue;
-import com.sansey.tictactoe.checks.AnyRowHasAllCellsWithValue;
-import com.sansey.tictactoe.checks.MainDiagonalHasAllCellsWithValue;
-import com.sansey.tictactoe.checks.SecondaryDiagonalHasAllCellsWithValue;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import java.io.PrintStream;
 import java.util.Arrays;
-
 
 /**
  * Field to play classic Tic-tac-toe game.
@@ -28,13 +24,20 @@ public final class TicTacToeField implements Field {
   private final IntMatrix field;
 
   /**
+   * Chained {@link Check} used to check field values for winning.
+   */
+  private final Check check;
+
+  /**
    * Main constructor.
    * Doesn't validate provided array for size and content correctness.
    * Use {@link ValidatedFieldArray} to validate passed byte array.
    * @param matrix - {@link IntMatrix} that stores the field
+   * @param chk - chained rules to check value for winning
    */
-  public TicTacToeField(final IntMatrix matrix) {
+  public TicTacToeField(final IntMatrix matrix, final Check chk) {
     this.field = matrix;
+    this.check = chk;
   }
 
   /**
@@ -68,28 +71,20 @@ public final class TicTacToeField implements Field {
     return new TicTacToeField(
         new SimpleIntMatrix(
             array
-        )
+        ),
+        this.check
     );
   }
 
+  /**
+   * Returns true if the game has finished and provided values have won.
+   * @param value - the value to check for the winning
+   * @return <code>true</code> if the game finished and
+   *     provided values have won, otherwise - <code>false</code>
+   * @throws Exception if result can't be determined for any reason
+   */
   public boolean valueWon(final int value) throws Exception {
-    return
-      new AnyRowHasAllCellsWithValue(
-        this.field,
-        value
-      ).result()
-      || new AnyColumnHasAllCellsWithValue(
-           this.field,
-           value
-         ).result()
-      || new MainDiagonalHasAllCellsWithValue(
-           this.field,
-           value
-         ).result()
-      || new SecondaryDiagonalHasAllCellsWithValue(
-           this.field,
-           value
-         ).result();
+    return this.check.result(field, value);
   }
 
   /**

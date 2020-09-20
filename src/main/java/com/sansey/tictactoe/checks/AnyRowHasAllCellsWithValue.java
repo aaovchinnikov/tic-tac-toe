@@ -4,48 +4,48 @@ import com.sansey.tictactoe.Check;
 import com.sansey.tictactoe.IntMatrix;
 
 /**
- * Checks that any row in provided matrix
+ * Chained {@link Check} that checks that any row in provided matrix
  * has all its cells with provided value.
+ * If check passes then returns immediately, otherwise calls
+ * next {@link Check} in chain.
  * Doesn't validate provided matrix to has at least one row.
  * Use {@link NonZeroRowsMatrix} validating decorator for this purpose.
  * @author Alexander Ovchinnikov
  */
 public final class AnyRowHasAllCellsWithValue implements Check {
   /**
-   * Matrix to check.
+   * Next {@link Check} in chain.
    */
-  private final IntMatrix matrix;
-
-  /**
-   * Value to check for.
-   */
-  private final int value;
+  private final Check next;
 
   /**
    * Main constructor.
-   * @param mtrx - integer matrix to check
-   * @param v - integer value to check
+   * @param nxt - next {@link Check} in chain
    */
-  public AnyRowHasAllCellsWithValue(final IntMatrix mtrx, final int v) {
-    this.matrix = mtrx;
-    this.value = v;
+  public AnyRowHasAllCellsWithValue(final Check nxt) {
+    this.next = nxt;
   }
 
   /**
    * Checks that any row in provided matrix
    * has all its cells with provided value.
+   * @param matrix - {@link IntMatrix} to check
+   * @param value - value to check for
    * @return <code>true</code> if any row in provided matrix
    *     has all its cells with provided value,
    *     otherwise - <code>false</code>
    */
   @Override
-  public boolean result() throws Exception {
+  public boolean result(
+      final IntMatrix matrix,
+      final int value
+  ) throws Exception {
     try {
       boolean passes;
-      for (int i = 0; i < this.matrix.rows(); i++) {
+      for (int i = 0; i < matrix.rows(); i++) {
         passes = true;
-        for (int j = 0; passes && j < this.matrix.columns(); j++) {
-          if (this.matrix.matrix()[i][j] != this.value) {
+        for (int j = 0; passes && j < matrix.columns(); j++) {
+          if (matrix.matrix()[i][j] != value) {
             passes = false;
           }
         }
@@ -53,7 +53,7 @@ public final class AnyRowHasAllCellsWithValue implements Check {
           return passes;
         }
       }
-      return false;
+      return this.next.result(matrix, value);
     } catch (Exception e) {
       throw new Exception(
           "Can't determite result of the check for provided matrix",
