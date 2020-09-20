@@ -15,62 +15,74 @@ import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 class SecondaryDiagonalHasAllCellsWithValueTest {
   @Test
   void passesCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 2}, 
-      {2, 1}
-    };
     assertTrue(
-        new SecondaryDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            2
-        ).result()
+      new SecondaryDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 2}, 
+            {2, 1}
+          }
+        ),
+        2
+      )
     );
   }
-  
+
   @Test
   void moreRowsThanColumns() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 2}, 
-      {2, 1},
-      {3, 4}
-    };
     assertTrue(
-        new SecondaryDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            2
-        ).result()
+      new SecondaryDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 2}, 
+            {2, 1},
+            {3, 4}
+          }
+        ),
+        2
+      )
     );
   }
 
   @Test
   void failsCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 2}, 
-      {1, 2}
-    };
     assertFalse(
-        new SecondaryDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new SecondaryDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 2}, 
+            {1, 2}
+          }
+        ),
+        1
+      )
     );
   }
-  
+
   @Test
   void exceptionDuringCheck() throws Exception {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final int[][] matrix = new int[][] {
-          {2}, 
-          {1}
-        };
         new SecondaryDiagonalHasAllCellsWithValue(
-            new EqualSizedMatrix(
-                new SimpleIntMatrix(matrix)
-            ),
-            1
-        ).result();
+            new FalseCheck()
+        ).result(
+          new EqualSizedMatrix(
+            new SimpleIntMatrix(
+              new int[][] {
+                {2}, 
+                {1}
+              }
+            )
+          ),
+          1
+        );
       }
     });
     assertEquals("Can't determite result of the check for provided matrix", e.getMessage());

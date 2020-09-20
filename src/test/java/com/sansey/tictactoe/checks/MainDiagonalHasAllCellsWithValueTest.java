@@ -14,44 +14,53 @@ import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 class MainDiagonalHasAllCellsWithValueTest {
   @Test
   void passesCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 2}, 
-      {2, 1}
-    };
     assertTrue(
-        new MainDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new MainDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 2}, 
+            {2, 1}
+          }
+        ),
+        1
+      )
     );
   }
-  
+
   @Test
   void moreRowsThanColumns() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 2}, 
-      {2, 1},
-      {3, 4}
-    };
     assertTrue(
-        new MainDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new MainDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 2}, 
+            {2, 1},
+            {3, 4}
+          }
+        ),
+        1
+      )
     );
   }
 
   @Test
   void failsCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {1, 1}, 
-      {1, 2}
-    };
     assertFalse(
-        new MainDiagonalHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new MainDiagonalHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {1, 1}, 
+            {1, 2}
+          }
+        ),
+        1
+      )
     );
   }
   
@@ -60,16 +69,19 @@ class MainDiagonalHasAllCellsWithValueTest {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final int[][] matrix = new int[][] {
-          {2}, 
-          {1}
-        };
         new MainDiagonalHasAllCellsWithValue(
-            new EqualSizedMatrix(
-                new SimpleIntMatrix(matrix)
-            ),
-            1
-        ).result();
+            new FalseCheck()
+        ).result(
+          new EqualSizedMatrix(
+            new SimpleIntMatrix(
+              new int[][] {
+                {2}, 
+                {1}
+              }
+            )
+          ),
+          1
+        );
       }
     });
     assertEquals("Can't determite result of the check for provided matrix", e.getMessage());

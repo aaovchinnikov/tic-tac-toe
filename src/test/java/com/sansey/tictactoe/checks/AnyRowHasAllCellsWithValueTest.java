@@ -14,29 +14,35 @@ import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 class AnyRowHasAllCellsWithValueTest {
   @Test
   void passesCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {2, 1}, 
-      {1, 1}
-    };
     assertTrue(
-        new AnyRowHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new AnyRowHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {2, 1}, 
+            {1, 1}
+          }
+        ),
+        1
+      )
     );
   }
 
   @Test
   void failsCheck() throws Exception {
-    final int[][] matrix = new int[][] {
-      {2, 1}, 
-      {1, 2}
-    };
     assertFalse(
-        new AnyRowHasAllCellsWithValue(
-            new SimpleIntMatrix(matrix),
-            1
-        ).result()
+      new AnyRowHasAllCellsWithValue(
+        new FalseCheck()
+      ).result(
+        new SimpleIntMatrix(
+          new int[][] {
+            {2, 1}, 
+            {1, 2}
+          }
+        ),
+        1
+      )
     );
   }
   
@@ -45,16 +51,19 @@ class AnyRowHasAllCellsWithValueTest {
     Exception e = assertThrows(Exception.class, new Executable() {
       @Override
       public void execute() throws Throwable {
-        final int[][] matrix = new int[][] {
-          {2}, 
-          {1}
-        };
         new AnyRowHasAllCellsWithValue(
-            new EqualSizedMatrix(
-                new SimpleIntMatrix(matrix)
-            ),
-            1
-        ).result();
+          new FalseCheck()
+        ).result(
+          new EqualSizedMatrix(
+            new SimpleIntMatrix(
+              new int[][] {
+                {2}, 
+                {1}
+              }
+            )
+          ),
+          1
+        );
       }
     });
     assertEquals("Can't determite result of the check for provided matrix", e.getMessage());
