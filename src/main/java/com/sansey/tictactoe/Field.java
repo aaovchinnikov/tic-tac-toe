@@ -17,32 +17,25 @@ public interface Field {
   Field withValueAt(IntValueAt value) throws Exception;
 
   /**
-   * Returns true if the game has finished and X-es have won.
+   * Returns true if the game has finished and provided values have won.
+   * @param value - the value to check for the winning
    * @return <code>true</code> if the game finished and X-es have won,
    *     <code>false</code> - if game has not finished yet or O-es have won or
    *     it's standoff
    * @throws Exception if result can't be determined for any reason
+   * @throws IndexOutOfBoundsException if field array rows count is zero
    */
-  boolean crossesWon() throws Exception;
+  public boolean valueWon(int value) throws Exception;
 
   /**
-   * Returns true if the game finished and O-es have won.
-   * @return <code>true</code> if the game finished and O-es have won,
-   *     <code>false</code> - if game has not finished yet or X-es have won or
-   *     it's standoff
-   * @throws Exception if result can't be determined for any reason
+   * Returns true if field is full of values and
+   * have no more empty cells.
+   * @return <code>true</code> if field is full of non-zero values and
+   *     have no more empty cells, otherwise - <code>false</code>
+   * @throws Exception if field can't be checked for any reason
    */
-  boolean nougthsWon() throws Exception;
-
-  /**
-   * Returns true if the game has finished and it's standoff.
-   * @return <code>true</code> if the game has finished and it's standoff,
-   *     <code>false</code> - if game has not finished yet or X-es have won or
-   *     O-es have won
-   * @throws Exception if result can't be determined for any reason
-   */
-  boolean standoff() throws Exception;
-
+  public boolean full() throws Exception;
+  
   /**
    * Prints game field to provided {@link PrintStream}.
    * @param out - {@link PrintStream} to print game field to.
