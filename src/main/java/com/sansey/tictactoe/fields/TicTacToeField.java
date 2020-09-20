@@ -124,6 +124,35 @@ public final class TicTacToeField implements Field {
              ).result();
   }
 
+  /**
+   * Returns true if the game has finished and provided values have won.
+   * @param value - the value to check for the winning
+   * @return <code>true</code> if the game finished and X-es have won,
+   *     <code>false</code> - if game has not finished yet or O-es have won or
+   *     it's standoff
+   * @throws Exception if result can't be determined for any reason
+   * @throws IndexOutOfBoundsException if field array rows count is zero
+   */
+  public boolean valueWon(final int value) throws Exception {
+    return
+      new AnyRowHasAllCellsWithValue(
+        this.field,
+        value
+      ).result()
+      || new AnyColumnHasAllCellsWithValue(
+           this.field,
+           value
+         ).result()
+      || new MainDiagonalHasAllCellsWithValue(
+           this.field,
+           value
+         ).result()
+      || new SecondaryDiagonalHasAllCellsWithValue(
+           this.field,
+           value
+         ).result();
+  }
+
   @Override
   public boolean standoff() throws Exception {
     if (this.crossesWon()) {
@@ -132,6 +161,24 @@ public final class TicTacToeField implements Field {
     if (this.nougthsWon()) {
       return false;
     }
+    for (int i = 0; i < this.field.rows(); i++) {
+      for (int j = 0; j < this.field.columns(); j++) {
+        if (this.field.matrix()[i][j] == 0) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  /**
+   * Returns true if field is full of values and
+   * have no more empty cells.
+   * @return <code>true</code> if field is full of non-zero values and
+   *     have no more empty cells, otherwise - <code>false</code>
+   * @throws Exception if field can't be checked for any reason
+   */
+  public boolean full() throws Exception {
     for (int i = 0; i < this.field.rows(); i++) {
       for (int j = 0; j < this.field.columns(); j++) {
         if (this.field.matrix()[i][j] == 0) {

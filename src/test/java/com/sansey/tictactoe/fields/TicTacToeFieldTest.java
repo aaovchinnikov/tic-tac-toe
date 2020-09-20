@@ -1,4 +1,4 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.fields;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,7 +9,6 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
-import com.sansey.tictactoe.fields.TicTacToeField;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import com.sansey.tictactoe.values.SimpleIntValueAt;
 
@@ -64,6 +63,86 @@ class TicTacToeFieldTest {
             + column
             + "] is not empty.",
         e.getMessage()
+    );
+  }
+  
+  @Test
+  void crossesWonWithRow() throws Exception {
+    final int[][] martix = new int[][] {
+      {1, 1, 1},
+      {0, 0, 0},
+      {0, 0, 0}
+    };
+    assertTrue(
+      new TicTacToeField(
+        new SimpleIntMatrix(
+          martix
+        )
+      ).crossesWon()
+    );
+  }
+  
+  @Test
+  void crossesWonWithColumn() throws Exception {
+    final int[][] martix = new int[][] {
+      {1, 0, 0},
+      {1, 0, 0},
+      {1, 0, 0}
+    };
+    assertTrue(
+      new TicTacToeField(
+        new SimpleIntMatrix(
+          martix
+        )
+      ).crossesWon()
+    );
+  }
+  
+  @Test
+  void crossesWonWithMainDiagonal() throws Exception {
+    final int[][] martix = new int[][] {
+      {1, 0, 0},
+      {0, 1, 0},
+      {0, 0, 1}
+    };
+    assertTrue(
+      new TicTacToeField(
+        new SimpleIntMatrix(
+          martix
+        )
+      ).crossesWon()
+    );
+  }
+  
+  @Test
+  void crossesWonWithSecondaryDiagonal() throws Exception {
+    final int[][] martix = new int[][] {
+      {0, 0, 1},
+      {0, 1, 0},
+      {1, 0, 1}
+    };
+    assertTrue(
+      new TicTacToeField(
+        new SimpleIntMatrix(
+          martix
+        )
+      ).crossesWon()
+    );
+  }
+  
+  @Test
+  void crossesHavNotWon() throws Exception {
+    final int[][] martix = new int[][] {
+      {0, 0, 0},
+      {0, 0, 0},
+      {0, 0, 0}
+    };
+    assertFalse(
+      new TicTacToeField(
+        new SimpleIntMatrix(
+          martix
+        )
+      ).crossesWon()
     );
   }
   

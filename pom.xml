@@ -112,6 +112,7 @@
 						@{argLine} 
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.checks=ALL-UNNAMED
+						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.fields=ALL-UNNAMED
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.matrices=ALL-UNNAMED
 					</argLine>
 				</configuration>
