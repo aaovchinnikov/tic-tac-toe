@@ -57,7 +57,7 @@ public class MainDiagonalHasAllCellsWithValue implements Check {
       return false;
     } catch (Exception e) {
       throw new Exception(
-          "Can't determite result of the check for provided matrix ",
+          "Can't determite result of the check for provided matrix",
           e
       );
     }
