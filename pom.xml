@@ -139,8 +139,8 @@
 						</rule>
 					</rules>
 					<excludes>
-						<exclude>com/sansey/tictactoe/Main.class</exclude>
-						<exclude>com/sansey/tictactoe/ConsoleTicTacToe.class</exclude>
+						<exclude>com/sansey/tictactoe/main/Main.class</exclude>
+						<exclude>com/sansey/tictactoe/games/ConsoleTicTacToe.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>
