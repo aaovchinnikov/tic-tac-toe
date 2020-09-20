@@ -11,4 +11,20 @@ public interface IntMatrix {
    * @throws Exception if matrix can't be returned for any reason
    */
   int[][] matrix() throws Exception;
+
+  /**
+   * Returms amount of rows in matrix.
+   * @return amount of rows in matrix
+   * @throws Exception if amount of rows in matrix
+   *     can't be returned for any reason
+   */
+  int rows() throws Exception;
+
+  /**
+   * Returms amount of columns in matrix.
+   * @return amount of columns in matrix
+   * @throws Exception if amount of columns in matrix
+   *     can't be returned for any reason
+   */
+  int columns() throws Exception;
 }

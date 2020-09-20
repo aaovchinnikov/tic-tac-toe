@@ -108,7 +108,11 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
-					<argLine>@{argLine} --add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED</argLine>
+					<argLine>
+						@{argLine} 
+						--add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED
+						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.matrices=ALL-UNNAMED
+					</argLine>
 				</configuration>
 			</plugin>
 			<plugin>

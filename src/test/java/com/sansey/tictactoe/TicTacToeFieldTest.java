@@ -9,6 +9,8 @@ import java.nio.charset.StandardCharsets;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import com.sansey.tictactoe.matrices.SimpleIntMatrix;
+
 class TicTacToeFieldTest {
   
   @Test

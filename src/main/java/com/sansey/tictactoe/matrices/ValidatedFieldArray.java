@@ -1,4 +1,7 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.matrices;
+
+import com.sansey.tictactoe.IntMatrix;
+import com.sansey.tictactoe.NaturalInt;
 
 /**
  * Validating decorator for {@link IntMatrix} that checks provided
@@ -15,7 +18,7 @@ public final class ValidatedFieldArray implements IntMatrix {
    * X's are represented by value 1 in array item.
    * O's are represented by value 2 in array item.
    */
-  private final int[][] array;
+  private final IntMatrix origin;
 
   /**
    * Valid size of field.
@@ -24,11 +27,11 @@ public final class ValidatedFieldArray implements IntMatrix {
 
   /**
    * Main constructor.
-   * @param arr - integers array that stores the Tic-tac-toe field.
+   * @param mtrx - integers array that stores the Tic-tac-toe field.
    * @param s - valid size of field
    */
-  public ValidatedFieldArray(final int[][] arr, final NaturalInt s) {
-    this.array = arr;
+  public ValidatedFieldArray(final IntMatrix mtrx, final NaturalInt s) {
+    this.origin = mtrx;
     this.size = s;
   }
 
@@ -38,36 +41,36 @@ public final class ValidatedFieldArray implements IntMatrix {
    */
   @Override
   public int[][] matrix() throws Exception {
-    if (this.array.length != this.size.value()) {
+    if (this.origin.rows() != this.size.value()) {
       throw new Exception(
           "Provided array should be "
               + this.size.value()
               + "x"
               + this.size.value()
               + " in size, but instead has rows: "
-              + this.array.length
+              + this.origin.rows()
       );
     }
-    if (this.array[0].length != this.size.value()) {
+    if (this.origin.columns() != this.size.value()) {
       throw new Exception(
           "Provided array should be "
               + this.size.value()
               + "x"
               + this.size.value()
               + " in size, but instead has columns: "
-              + this.array[0].length
+              + this.origin.columns()
       );
     }
     for (int i = 0; i < this.size.value(); i++) {
       for (int j = 0; j < this.size.value(); j++) {
         if (
-            this.array[i][j] != 0
-            && this.array[i][j] != 1
-            && this.array[i][j] != 2
+            this.origin.matrix()[i][j] != 0
+            && this.origin.matrix()[i][j] != 1
+            && this.origin.matrix()[i][j] != 2
         ) {
           throw new Exception(
               "Invalid value "
-                  + this.array[i][j]
+                  + this.origin.matrix()[i][j]
                   + " in provided array at element with index ["
                   + i
                   + "]["
@@ -78,6 +81,16 @@ public final class ValidatedFieldArray implements IntMatrix {
         }
       }
     }
-    return this.array;
+    return this.origin.matrix();
+  }
+
+  @Override
+  public int rows() throws Exception {
+    return this.matrix().length;
+  }
+
+  @Override
+  public int columns() throws Exception {
+    return this.matrix()[0].length;
   }
 }

@@ -1,5 +1,7 @@
 package com.sansey.tictactoe;
 
+import com.sansey.tictactoe.matrices.SimpleIntMatrix;
+import com.sansey.tictactoe.matrices.ValidatedFieldArray;
 import java.util.Scanner;
 
 public final class Main {
@@ -19,7 +21,9 @@ public final class Main {
         System.out,
         new TicTacToeField(
             new ValidatedFieldArray(
-                new int[size][size],
+                new SimpleIntMatrix(
+                    new int[size][size]
+                ),
                 new NaturalInt(size)
             )
         )

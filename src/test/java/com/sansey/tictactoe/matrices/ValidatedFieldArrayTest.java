@@ -1,9 +1,12 @@
-package com.sansey.tictactoe;
+package com.sansey.tictactoe.matrices;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
+import com.sansey.tictactoe.NaturalInt;
 
 class ValidatedFieldArrayTest {
 
@@ -13,7 +16,7 @@ class ValidatedFieldArrayTest {
     assertEquals(
         array,
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix()
     );
@@ -30,7 +33,7 @@ class ValidatedFieldArrayTest {
     assertEquals(
         array,
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix()
     );
@@ -47,7 +50,7 @@ class ValidatedFieldArrayTest {
     assertEquals(
         array,
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix()
     );
@@ -60,7 +63,7 @@ class ValidatedFieldArrayTest {
       public void execute() throws Throwable {
         final int[][] array = new int[0][3];
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix();
       }
@@ -75,7 +78,7 @@ class ValidatedFieldArrayTest {
       public void execute() throws Throwable {
         final int[][] array = new int[3][0];
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix();
       }
@@ -91,7 +94,7 @@ class ValidatedFieldArrayTest {
         final int[][] array = new int[3][3];
         array[0][0] = -1;
         new ValidatedFieldArray(
-            array,
+            new SimpleIntMatrix(array),
             new NaturalInt(3)
         ).matrix();
       }
@@ -99,4 +102,29 @@ class ValidatedFieldArrayTest {
     assertEquals("Invalid value -1 in provided array at element with index [0][0]. Should be 0 or 1 or 2.", e.getMessage());
   }
   
+  @Test
+  void validRows() throws Exception {
+    final int size = 3;
+    final int[][] array = new int[size][size];
+    assertEquals(
+        size,
+        new ValidatedFieldArray(
+            new SimpleIntMatrix(array),
+            new NaturalInt(3)
+        ).rows()
+    );
+  }
+  
+  @Test
+  void validColumns() throws Exception {
+    final int size = 3;
+    final int[][] array = new int[size][size];
+    assertEquals(
+        size,
+        new ValidatedFieldArray(
+            new SimpleIntMatrix(array),
+            new NaturalInt(3)
+        ).columns()
+    );
+  }
 }
