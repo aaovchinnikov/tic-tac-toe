@@ -5,6 +5,7 @@ import com.sansey.tictactoe.checks.AnyRowHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.FalseCheck;
 import com.sansey.tictactoe.checks.MainDiagonalHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.SecondaryDiagonalHasAllCellsWithValue;
+import com.sansey.tictactoe.factories.ConsoleCrossesNaughtsTurnFactory;
 import com.sansey.tictactoe.fields.TicTacToeField;
 import com.sansey.tictactoe.games.ConsoleTicTacToe;
 import com.sansey.tictactoe.ints.NaturalInt;
@@ -43,7 +44,8 @@ public final class Main {
             )
           )
         )
-      )
+      ),
+      new ConsoleCrossesNaughtsTurnFactory()
     ).start();
   }
 }
