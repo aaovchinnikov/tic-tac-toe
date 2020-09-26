@@ -11,6 +11,11 @@ import com.sansey.tictactoe.games.ConsoleTicTacToe;
 import com.sansey.tictactoe.ints.NaturalInt;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import com.sansey.tictactoe.matrices.ValidatedFieldArray;
+import com.sansey.tictactoe.views.CrossView;
+import com.sansey.tictactoe.views.EmptyCellView;
+import com.sansey.tictactoe.views.NaughtView;
+import com.sansey.tictactoe.views.UnknownView;
+
 import java.util.Scanner;
 
 public final class Main {
@@ -24,9 +29,11 @@ public final class Main {
    * @param args - command-line arguments of application
    */
   public static void main(final String[] args) {
+    final int empty = 0;
+    final int crosses = 1;
+    final int naughts = 2;
     final int size = 3;
     new ConsoleTicTacToe(
-      new Scanner(System.in),
       System.out,
       new TicTacToeField(
         new ValidatedFieldArray(
@@ -34,6 +41,16 @@ public final class Main {
             new int[size][size]
           ),
           new NaturalInt(size)
+        ),
+        new EmptyCellView(
+          empty,
+          new CrossView(
+            crosses, 
+            new NaughtView(
+              naughts,
+              new UnknownView()
+            )
+          )
         ),
         new AnyRowHasAllCellsWithValue(
           new AnyColumnHasAllCellsWithValue(
@@ -45,7 +62,10 @@ public final class Main {
           )
         )
       ),
-      new ConsoleCrossesNaughtsTurnFactory()
+      new ConsoleCrossesNaughtsTurnFactory(
+        new Scanner(System.in),
+        System.out
+      )
     ).start();
   }
 }

@@ -4,6 +4,7 @@ import com.sansey.tictactoe.Check;
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.IntMatrix;
 import com.sansey.tictactoe.IntValueAt;
+import com.sansey.tictactoe.View;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import java.io.PrintStream;
 import java.util.Arrays;
@@ -24,6 +25,11 @@ public final class TicTacToeField implements Field {
   private final IntMatrix field;
 
   /**
+   * Chained {@link View} used to get visual representation for field cells.
+   */
+  private final View<Integer, String> view;
+  
+  /**
    * Chained {@link Check} used to check field values for winning.
    */
   private final Check check;
@@ -35,8 +41,13 @@ public final class TicTacToeField implements Field {
    * @param matrix - {@link IntMatrix} that stores the field
    * @param chk - chained rules to check value for winning
    */
-  public TicTacToeField(final IntMatrix matrix, final Check chk) {
+  public TicTacToeField(
+      final IntMatrix matrix,
+      final View<Integer, String> v,
+      final Check chk
+  ) {
     this.field = matrix;
+    this.view = v;
     this.check = chk;
   }
 
@@ -72,6 +83,7 @@ public final class TicTacToeField implements Field {
         new SimpleIntMatrix(
             array
         ),
+        this.view,
         this.check
     );
   }
@@ -121,24 +133,11 @@ public final class TicTacToeField implements Field {
         out.print(i);
         for (int j = 0; j < columns; j++) {
           out.print(' ');
-          if (this.field.matrix()[i][j] == 0) {
-            out.print('_');
-          } else if (this.field.matrix()[i][j] == 1) {
-            out.print('X');
-          } else if (this.field.matrix()[i][j] == 2) {
-            out.print('O');
-          } else {
-            throw new Exception(
-                "Invalid value "
-                    + this.field.matrix()[i][j]
-                    + " in field backing array at element with index ["
-                    + i
-                    + "]["
-                    + j
-                    + "]."
-                    + " Should be 0 or 1 or 2."
-            );
-          }
+          out.print(
+            this.view.view(
+              this.field.matrix()[i][j]
+            )
+          );
         }
         out.println();
       }

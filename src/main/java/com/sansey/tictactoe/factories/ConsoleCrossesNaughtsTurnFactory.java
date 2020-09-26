@@ -1,5 +1,8 @@
 package com.sansey.tictactoe.factories;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.Turn;
 import com.sansey.tictactoe.TurnFactory;
@@ -15,6 +18,8 @@ import com.sansey.tictactoe.turns.ConsoleNaughtsTurn;
  * @author Alexander Ovchinnikov
  */
 public final class ConsoleCrossesNaughtsTurnFactory implements TurnFactory {
+  private final Scanner scanner;
+  private final PrintStream out;
   /**
    * Variable field to decide which {@link Turn} implementation to return next.
    */
@@ -22,16 +27,20 @@ public final class ConsoleCrossesNaughtsTurnFactory implements TurnFactory {
 
   /**
    * Main constructor.
+   * @param scanner
+   * @param out
    */
-  public ConsoleCrossesNaughtsTurnFactory() {
+  public ConsoleCrossesNaughtsTurnFactory(Scanner scnr, PrintStream stream) {
+    this.scanner = scnr;
+    this.out = stream;
     this.next = ConsoleCrossesTurn.class;
   }
 
   @Override
-  public Turn createTurn(final Field f) throws Exception {
+  public Turn createTurn(final Field field) throws Exception {
     if (this.next == ConsoleCrossesTurn.class) {
       this.next = ConsoleNaughtsTurn.class;
-      return new ConsoleCrossesTurn();
+      return new ConsoleCrossesTurn(field, this.scanner, this.out);
     } else {
       this.next = ConsoleCrossesTurn.class;
       return new ConsoleNaughtsTurn();

@@ -3,7 +3,7 @@ package com.sansey.tictactoe;
 import java.io.PrintStream;
 
 /**
- * Represents Tic-tac-toe game field.
+ * Represents game field backed by matrix of integers.
  * @author Alexander Ovchinnikov
  */
 public interface Field {

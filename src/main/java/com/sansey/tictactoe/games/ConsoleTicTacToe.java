@@ -19,11 +19,6 @@ import java.util.Scanner;
  */
 public final class ConsoleTicTacToe implements Game {
   /**
-   * {@link Scanner} to read the input from.
-   */
-  private final Scanner scanner;
-
-  /**
    * {@link PrintStream} where to print console output.
    */
   private final PrintStream out;
@@ -48,12 +43,10 @@ public final class ConsoleTicTacToe implements Game {
    *     {@link Turn}s for the game
    */
   public ConsoleTicTacToe(
-      final Scanner input,
       final PrintStream stream,
       final Field f,
       final TurnFactory fctry
   ) {
-    this.scanner = input;
     this.out = stream;
     this.field = f;
     this.factory = fctry;
@@ -73,38 +66,6 @@ public final class ConsoleTicTacToe implements Game {
         fld.printTo(out);
         // result.printTo(Output);
       } while (!result.endGame());
-
-      // FIXME Checkstyle workaround to hide internal knowledge
-      // that field is 3x3
-      final int size = 3;
-      boolean valid = false;
-      while (!valid) {
-        this.out.print("X's turn. Type cell coordinates - row and "
-            + "column (e.g.: 1 3) - and press \'Enter\'-key: ");
-        try {
-          final Scanner input = new Scanner(this.scanner.nextLine());
-          final int row = input.nextInt();
-          final int column = input.nextInt();
-          this.out.println("Row is " + row);
-          this.out.println("Columnt is " + column);
-          fld = fld.withValueAt(
-              new ValidatedFieldValue(
-                  new SimpleIntValueAt(1, row, column),
-                  new NaturalInt(size)
-              )
-          );
-          valid = true;
-          fld.printTo(out);
-        } catch (InputMismatchException ime) {
-          this.out.println("Input is not an integer coordinates.");
-        } catch (NoSuchElementException nse) {
-          this.out.println(
-              "Input should contain two coordinates but only one entered."
-          );
-        } catch (Exception e) {
-          this.out.println(e.getMessage());
-        }
-      }
     } catch (Exception e) {
       e.printStackTrace();
     }

@@ -3,7 +3,7 @@ package com.sansey.tictactoe;
 /**
  * Represents arbitrary check around {@link IntMatrix} and integer value
  * without any special meaning that has boolean result.
- * May be used for complex checks organized as Chain of responsibility pattern
+ * May be used for complex checks organized as Chain of responsibility pattern.
  * @author Alexander Ovchinnikov
  */
 public interface Check {
