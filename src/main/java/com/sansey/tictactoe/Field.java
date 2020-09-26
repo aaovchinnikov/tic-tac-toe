@@ -40,4 +40,31 @@ public interface Field {
    * @throws Exception if field can't be printed for any reason
    */
   void printTo(PrintStream out) throws Exception;
+
+  /**
+   * Fake implementation that does nothing. may be used in unit tests that need
+   * fake Field as an argument but don't use its methods.
+   * @author Alexander Ovchinnikov
+   */
+  final class Fake implements Field {
+    @Override
+    public Field withValueAt(final IntValueAt value) throws Exception {
+      return null;
+    }
+
+    @Override
+    public boolean valueWon(final int value) throws Exception {
+      return false;
+    }
+
+    @Override
+    public void printTo(final PrintStream out) throws Exception {
+      // Does nothing
+    }
+
+    @Override
+    public boolean full() throws Exception {
+      return false;
+    }
+  }
 }

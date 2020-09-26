@@ -112,8 +112,10 @@
 						@{argLine} 
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe=ALL-UNNAMED
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.checks=ALL-UNNAMED
+						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.factories=ALL-UNNAMED
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.fields=ALL-UNNAMED
 						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.matrices=ALL-UNNAMED
+						--add-opens com.sansey.tictactoe/com.sansey.tictactoe.turns=ALL-UNNAMED
 					</argLine>
 				</configuration>
 			</plugin>
@@ -140,6 +142,7 @@
 						</rule>
 					</rules>
 					<excludes>
+						<exclude>com/sansey/tictactoe/Field$Fake.class</exclude>
 						<exclude>com/sansey/tictactoe/main/Main.class</exclude>
 						<exclude>com/sansey/tictactoe/games/ConsoleTicTacToe.class</exclude>
 					</excludes>

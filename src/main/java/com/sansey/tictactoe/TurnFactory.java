@@ -11,5 +11,5 @@ public interface TurnFactory {
    * @param f - {@link Field} for performing the turn
    * @return instance of {@link Turn} for provided {@link Field}
    */
-  Turn createTurn(Field f);
+  Turn createTurn(Field f) throws Exception;
 }
