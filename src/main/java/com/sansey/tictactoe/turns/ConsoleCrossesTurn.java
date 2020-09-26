@@ -9,6 +9,7 @@ import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.Turn;
 import com.sansey.tictactoe.TurnResult;
 import com.sansey.tictactoe.ints.NaturalInt;
+import com.sansey.tictactoe.results.ConsoleCrossesTurnResult;
 import com.sansey.tictactoe.values.SimpleIntValueAt;
 import com.sansey.tictactoe.values.ValidatedFieldValue;
 
@@ -59,7 +60,7 @@ public final class ConsoleCrossesTurn implements Turn {
                 new NaturalInt(size)
             )
         );
-        return new TurnResult.Fake();
+        return new ConsoleCrossesTurnResult(code, fld);
       } catch (InputMismatchException ime) {
         this.out.println("Input is not an integer coordinates.");
       } catch (NoSuchElementException nse) {

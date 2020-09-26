@@ -1,17 +1,13 @@
 package com.sansey.tictactoe.games;
 
+import java.io.PrintStream;
+import java.util.Scanner;
+
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.Game;
 import com.sansey.tictactoe.Turn;
 import com.sansey.tictactoe.TurnFactory;
 import com.sansey.tictactoe.TurnResult;
-import com.sansey.tictactoe.ints.NaturalInt;
-import com.sansey.tictactoe.values.SimpleIntValueAt;
-import com.sansey.tictactoe.values.ValidatedFieldValue;
-import java.io.PrintStream;
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 /**
  * Represents console version of Tic-tac-toe game.
@@ -64,7 +60,7 @@ public final class ConsoleTicTacToe implements Game {
         result = turn.result();
         fld = result.field();
         fld.printTo(out);
-        // result.printTo(Output);
+        result.printTo(out);
       } while (!result.endGame());
     } catch (Exception e) {
       e.printStackTrace();
