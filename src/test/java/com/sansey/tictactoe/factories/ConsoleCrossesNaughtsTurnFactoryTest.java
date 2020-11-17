@@ -17,7 +17,7 @@ class ConsoleCrossesNaughtsTurnFactoryTest {
     Field field = new Field.Fake();
     assertEquals(
       ConsoleCrossesTurn.class, 
-      factory.createTurn(field).getClass()
+      factory.nextTurn(field).getClass()
    );
   }
   
@@ -25,10 +25,10 @@ class ConsoleCrossesNaughtsTurnFactoryTest {
   void twoCallsReturnsNaughts() throws Exception {
     TurnFactory factory = new ConsoleCrossesNaughtsTurnFactory();
     Field field = new Field.Fake(); 
-    factory.createTurn(field);
+    factory.nextTurn(field);
     assertEquals(
       ConsoleNaughtsTurn.class,
-      factory.createTurn(field).getClass()
+      factory.nextTurn(field).getClass()
     );  
   }
   
@@ -36,11 +36,11 @@ class ConsoleCrossesNaughtsTurnFactoryTest {
   void threeCallsReturnsCrosses() throws Exception {
     TurnFactory factory = new ConsoleCrossesNaughtsTurnFactory();
     Field field = new Field.Fake(); 
-    factory.createTurn(field);
-    factory.createTurn(field);
+    factory.nextTurn(field);
+    factory.nextTurn(field);
     assertEquals(
         ConsoleCrossesTurn.class,
-      factory.createTurn(field).getClass()
+      factory.nextTurn(field).getClass()
     );  
   }
 }

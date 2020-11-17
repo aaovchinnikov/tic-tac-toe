@@ -37,7 +37,7 @@ class SyncronizedTurnFactoryTest {
         service.submit(
           () -> {
             latch.await();
-            return factory.createTurn(new Field.Fake());
+            return factory.nextTurn(new Field.Fake());
           }
         )
       );

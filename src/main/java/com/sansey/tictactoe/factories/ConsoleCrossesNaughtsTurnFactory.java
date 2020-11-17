@@ -37,7 +37,7 @@ public final class ConsoleCrossesNaughtsTurnFactory implements TurnFactory {
   }
 
   @Override
-  public Turn createTurn(final Field field) throws Exception {
+  public Turn nextTurn(final Field field) throws Exception {
     if (this.next == ConsoleCrossesTurn.class) {
       this.next = ConsoleNaughtsTurn.class;
       return new ConsoleCrossesTurn(field, this.scanner, this.out);

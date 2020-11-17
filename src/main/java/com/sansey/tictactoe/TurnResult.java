@@ -15,7 +15,7 @@ public interface TurnResult {
    *     otherwise - <code>false</code>.
    * @throws Exception if result can't be determined for any reason
    */
-  boolean endGame() throws Exception;
+  boolean lastTurn() throws Exception;
 
   /**
    * Returns {@link Field} that is result of the game turn.
@@ -28,7 +28,7 @@ public interface TurnResult {
    * @param output - the {@link Output} to print to
    * @throws Exception if the {@link TurnResult} can't be printed for any reason
    */
-  void printTo(PrintStream out) throws Exception;
+  void outTo(Output out) throws Exception;
 
   /**
    * Fake implementation that does nothing. may be used in unit tests that need
@@ -39,7 +39,7 @@ public interface TurnResult {
   final class Fake implements TurnResult {
 
     @Override
-    public boolean endGame() {
+    public boolean lastTurn() {
       return false;
     }
 
@@ -49,7 +49,7 @@ public interface TurnResult {
     }
 
     @Override
-    public void printTo(final PrintStream out) {
+    public void outTo(final Output out) {
       // Does nothing
     }
   }

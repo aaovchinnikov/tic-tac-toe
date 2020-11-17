@@ -1,7 +1,5 @@
 package com.sansey.tictactoe;
 
-import java.io.PrintStream;
-
 /**
  * Represents game field backed by matrix of integers.
  * @author Alexander Ovchinnikov
@@ -35,11 +33,11 @@ public interface Field {
   boolean full() throws Exception;
 
   /**
-   * Prints game field to provided {@link PrintStream}.
-   * @param out - {@link PrintStream} to print game field to.
-   * @throws Exception if field can't be printed for any reason
+   * Outputs the field to provided {@link Output}.
+   * @param out - {@link Output} to out the field to.
+   * @throws Exception if field can't be presented for any reason
    */
-  void printTo(PrintStream out) throws Exception;
+  void outTo(Output out) throws Exception;
 
   /**
    * Fake implementation that does nothing. may be used in unit tests that need
@@ -58,7 +56,7 @@ public interface Field {
     }
 
     @Override
-    public void printTo(final PrintStream out) throws Exception {
+    public void outTo(final Output out) throws Exception {
       // Does nothing
     }
 

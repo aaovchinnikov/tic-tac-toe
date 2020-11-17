@@ -24,10 +24,10 @@ public final class SyncronizedTurnFactory implements TurnFactory {
 
   /**
    * Synchronized invocation of
-   * decorated {@link TurnFactory#createTurn(Field)}.
+   * decorated {@link TurnFactory#nextTurn(Field)}.
    */
   @Override
-  public synchronized Turn createTurn(final Field f) throws Exception {
-    return this.origin.createTurn(f);
+  public synchronized Turn nextTurn(final Field f) throws Exception {
+    return this.origin.nextTurn(f);
   }
 }

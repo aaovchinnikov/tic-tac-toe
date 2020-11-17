@@ -56,7 +56,7 @@ public final class ConsoleTicTacToe implements Game {
       this.out.println("Tic-tac-toe game started!");
       this.field.printTo(out);
       do {
-        final Turn turn = this.factory.createTurn(fld);
+        final Turn turn = this.factory.nextTurn(fld);
         result = turn.result();
         fld = result.field();
         fld.printTo(out);
