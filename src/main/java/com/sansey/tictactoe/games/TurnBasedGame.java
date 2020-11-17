@@ -33,15 +33,17 @@ public final class TurnBasedGame implements Game {
   @Override
   public void start() {
     try {
-      TurnResult result;
-      Field fld = this.field;
-      do {
+      this.field.outTo(this.output);
+      for(Field fld = this.field;;) {
         final Turn turn = this.factory.nextTurn(fld);
-        result = turn.result();
+        final TurnResult result = turn.result();
         fld = result.field();
         fld.outTo(this.output);
         result.outTo(this.output);
-      } while (!result.lastTurn());
+        if (result.lastTurn()) {
+          break;
+        }
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }
