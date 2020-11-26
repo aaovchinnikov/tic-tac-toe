@@ -17,8 +17,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.Turn;
 import com.sansey.tictactoe.TurnFactory;
-import com.sansey.tictactoe.turns.ConsoleCrossesTurn;
-import com.sansey.tictactoe.turns.ConsoleNaughtsTurn;
+import com.sansey.tictactoe.turns.CrossesTurn;
+import com.sansey.tictactoe.turns.NaughtsTurn;
 
 class SyncronizedTurnFactoryTest {
 
@@ -29,7 +29,10 @@ class SyncronizedTurnFactoryTest {
     final Collection<Future<Turn>> futures = new ArrayList<>(threads);  
     final CountDownLatch latch = new CountDownLatch(1);
     TurnFactory factory = new SyncronizedTurnFactory(
-      new ConsoleCrossesNaughtsTurnFactory() 
+      new RoundRobinTurnFactory(
+        new CrossesTurnFactory(),
+        new NaughtsTurnFactory()
+      )
     );
     final List<Turn> turns = new ArrayList<>(threads);
     for (int t = 0; t < threads; t++) {
@@ -50,10 +53,10 @@ class SyncronizedTurnFactoryTest {
     int crosses = 0;
     int naughts = 0;
     for (int i = 0; i < turns.size(); i++) {
-      if (turns.get(i).getClass() == ConsoleCrossesTurn.class) {
+      if (turns.get(i).getClass() == CrossesTurn.class) {
         crosses++;
       }
-      if (turns.get(i).getClass() == ConsoleNaughtsTurn.class) {
+      if (turns.get(i).getClass() == NaughtsTurn.class) {
         naughts++;
       }
     }
