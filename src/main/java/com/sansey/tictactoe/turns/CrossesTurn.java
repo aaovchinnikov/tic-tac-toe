@@ -1,16 +1,8 @@
 package com.sansey.tictactoe.turns;
 
-import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
 import com.sansey.tictactoe.Field;
 import com.sansey.tictactoe.Turn;
 import com.sansey.tictactoe.TurnResult;
-import com.sansey.tictactoe.ints.NaturalInt;
-import com.sansey.tictactoe.results.ConsoleCrossesTurnResult;
-import com.sansey.tictactoe.values.SimpleIntValueAt;
-import com.sansey.tictactoe.values.ValidatedFieldValue;
 
 public final class CrossesTurn implements Turn{
   /**

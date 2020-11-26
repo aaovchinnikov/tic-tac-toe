@@ -22,6 +22,6 @@ public final class StringBuilderPrintedOutput implements Output {
 
   @Override
   public void flush() {
-    this.stream.print(this.builder.toString());
+    this.stream.println(this.builder.toString());
   }
 }

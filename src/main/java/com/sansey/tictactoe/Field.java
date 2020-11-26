@@ -15,13 +15,13 @@ public interface Field {
   Field withValueAt(IntValueAt value) throws Exception;
 
   /**
-   * Returns true if the game has finished and provided values have won.
+   * Returns true if the game has finished and provided figure have won.
    * @param value - the value to check for the winning
    * @return <code>true</code> if the game finished and
    *     provided values have won, otherwise - <code>false</code>
    * @throws Exception if result can't be determined for any reason
    */
-  boolean valueWon(int value) throws Exception;
+  boolean figureWon(Class<?> clazz) throws Exception;
 
   /**
    * Returns true if field is full of values and
@@ -51,7 +51,7 @@ public interface Field {
     }
 
     @Override
-    public boolean valueWon(final int value) throws Exception {
+    public boolean figureWon(final Class<?> clazz) throws Exception {
       return false;
     }
 
