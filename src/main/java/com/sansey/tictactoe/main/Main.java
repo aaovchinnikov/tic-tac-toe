@@ -5,7 +5,10 @@ import com.sansey.tictactoe.checks.AnyRowHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.FalseCheck;
 import com.sansey.tictactoe.checks.MainDiagonalHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.SecondaryDiagonalHasAllCellsWithValue;
-import com.sansey.tictactoe.factories.ConsoleCrossesNaughtsTurnFactory;
+import com.sansey.tictactoe.factories.CrossesTurnFactory;
+import com.sansey.tictactoe.factories.NaughtsTurnFactory;
+import com.sansey.tictactoe.factories.RoundRobinTurnFactory;
+import com.sansey.tictactoe.factories.SyncronizedTurnFactory;
 import com.sansey.tictactoe.fields.TicTacToeField;
 import com.sansey.tictactoe.games.TurnBasedGame;
 import com.sansey.tictactoe.ints.NaturalInt;
@@ -16,8 +19,6 @@ import com.sansey.tictactoe.views.CrossView;
 import com.sansey.tictactoe.views.EmptyCellView;
 import com.sansey.tictactoe.views.NaughtView;
 import com.sansey.tictactoe.views.UnknownView;
-
-import java.util.Scanner;
 
 public final class Main {
   private Main() {
@@ -62,9 +63,11 @@ public final class Main {
           )
         )
       ),
-      new ConsoleCrossesNaughtsTurnFactory(
-        new Scanner(System.in),
-        System.out
+      new SyncronizedTurnFactory(
+        new RoundRobinTurnFactory(
+            new CrossesTurnFactory(),
+            new NaughtsTurnFactory()
+        )
       ), 
       new StringBuilderPrintedOutput(
         new StringBuilder(),
