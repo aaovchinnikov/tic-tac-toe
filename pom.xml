@@ -144,8 +144,8 @@
 					<excludes>
 						<exclude>com/sansey/tictactoe/Field$Fake.class</exclude>
 						<exclude>com/sansey/tictactoe/TurnResult$Fake.class</exclude>
-						<exclude>com/sansey/tictactoe/main/Main.class</exclude>
-						<exclude>com/sansey/tictactoe/games/TurnBasedGame.class</exclude>
+						<exclude>com/sansey/tictactoe/main/*.class</exclude>
+						<exclude>com/sansey/tictactoe/games/*.class</exclude>
 					</excludes>
 				</configuration>
 				<executions>

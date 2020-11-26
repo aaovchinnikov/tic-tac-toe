@@ -7,10 +7,11 @@ import com.sansey.tictactoe.checks.MainDiagonalHasAllCellsWithValue;
 import com.sansey.tictactoe.checks.SecondaryDiagonalHasAllCellsWithValue;
 import com.sansey.tictactoe.factories.ConsoleCrossesNaughtsTurnFactory;
 import com.sansey.tictactoe.fields.TicTacToeField;
-import com.sansey.tictactoe.games.ConsoleTicTacToe;
+import com.sansey.tictactoe.games.TurnBasedGame;
 import com.sansey.tictactoe.ints.NaturalInt;
 import com.sansey.tictactoe.matrices.SimpleIntMatrix;
 import com.sansey.tictactoe.matrices.ValidatedFieldArray;
+import com.sansey.tictactoe.outputs.StringBuilderPrintedOutput;
 import com.sansey.tictactoe.views.CrossView;
 import com.sansey.tictactoe.views.EmptyCellView;
 import com.sansey.tictactoe.views.NaughtView;
@@ -33,8 +34,7 @@ public final class Main {
     final int crosses = 1;
     final int naughts = 2;
     final int size = 3;
-    new ConsoleTicTacToe(
-      System.out,
+    new TurnBasedGame(
       new TicTacToeField(
         new ValidatedFieldArray(
           new SimpleIntMatrix(
@@ -64,6 +64,10 @@ public final class Main {
       ),
       new ConsoleCrossesNaughtsTurnFactory(
         new Scanner(System.in),
+        System.out
+      ), 
+      new StringBuilderPrintedOutput(
+        new StringBuilder(),
         System.out
       )
     ).start();
